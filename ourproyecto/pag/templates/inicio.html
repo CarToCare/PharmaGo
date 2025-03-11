@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+
+    <link rel="icon" type="image/png" href="im.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'inicio.css' %}">  
+
+    <title>PharmaGo</title>
+</head>
+<body>
+ 
+    <div class="fondo"></div>
+    <div class="capa"></div>
+
+
+<div class="container-fluid">
+    <div class="container">
+        <h2>PharmaGo</h2>
+        <ul>
+            <li><a href="">Medicamentos</a></li>
+            <li><a href="">Pacientes</a></li>
+            <li><a href="">Recetas</a></li>
+            <li><a href="">Entregas</a></li>
+            <li><a href="">Prototipo</a></li>
+        </ul>
+    </div>
+
+    <div class="content" id="inicio">
+        <p>Bienvenido al centro de control: Tu acceso exclusivo para gestionar y optimizar la operación del hospital con eficiencia y seguridad.</p>
+    </div>
+
+
+    <section class="collage">
+        <h2></h2> 
+
+        <br>
+    
+        <div class="row">
+            <div class="collage-col">
+               <img src="/static/recursos/fondito.jpeg" alt="Medicamentos">
+                <h3>Medicamentos</h3>  
+            </div>
+    
+            <div class="collage-col">
+                <img src="/static/recursos/fondito.jpeg" alt="Pacientes">
+                <h3>Pacientes</h3>  
+            </div>
+            <div class="collage-col">
+                <img src="/static/recursos/fondito.jpeg" alt="Recetas">
+                <h3>Recetas</h3>  
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="collage-col">
+                <img src="/static/recursos/fondito.jpeg" alt="Entregas">
+                <h3>Entregas</h3>  
+            </div>
+    
+            <div class="collage-col">
+                <img src="/static/recursos/fondito.jpeg" alt="Prototipo">
+                <h3>Prototipo</h3>  
+            </div>
+        </div>
+    </section>
+    
+</div>
+</body>
+</html>

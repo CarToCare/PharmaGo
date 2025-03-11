@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+
+    <link rel="icon" type="image/png" href="im.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'principal.css' %}">  
+
+    <title>PharmaGo</title>
+</head>
+<body>
+ 
+    <div class="fondo"></div>
+    <div class="capa"></div>
+
+
+<div class="container-fluid">
+    <div class="container">
+        <h2>PharmaGo</h2>
+        <ul>
+            <li><a href="">¿Qué es?</a></li>
+            <li><a href="">Nosotros</a></li>
+            <li><a href="">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div class="content" id="inicio">
+        <h1>Bienvenido</h1>
+        <p>Administración médica simplificada para profesionales</p>
+        <a href="{% url 'iniciar_sesion' %}" class="btn">Iniciar sesión</a>
+
+    </div>
+</div>
+
+<!-- <video muted autoplay loop>
+    <source src="veterinaria.mp4" type="video/mp4">
+</video>
+<div class="capa"></div> -->
+
+</body>
+</html>
