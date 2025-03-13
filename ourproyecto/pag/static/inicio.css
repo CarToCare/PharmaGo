@@ -11,6 +11,7 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    background-color: #ebedea;
 }
 
 
@@ -94,7 +95,7 @@ body {
 }
 
 .container ul li a:hover {
-    color: #344D5D;
+    color: #85c1e9;
 }
 
 /* Botón */
@@ -140,10 +141,7 @@ body {
     justify-content: center;
     align-items: center; 
     padding-bottom: 350px;
-    
-  
 }
-
 
 .content h1 {
     font-family: "Montserrat", sans-serif;
@@ -199,6 +197,8 @@ body {
     width: 100%;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    filter: brightness(70%);
+    opacity: 0.6;
    
 }
 
@@ -213,7 +213,8 @@ body {
     height: auto;
     background-color:#49606e ;
     padding-top: 40px;
-    color: #000000;
+    color: #c5c2c2;
+    margin-top: -250px;
 }
 .footer-content {
     display: flex;
@@ -225,7 +226,7 @@ body {
 
 .footer-content h3{
     font-size: 1.8rem;
-    font-weight: 400;
+    font-weight: bold;
     text-transform: capitalize;
     line-height: 3rem;
 }
