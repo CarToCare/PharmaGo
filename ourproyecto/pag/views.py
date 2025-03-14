@@ -9,3 +9,6 @@ def iniciar_sesion(request):
 
 def inicio(request):
     return render(request, 'inicio.html')
+
+def medicamentos(request):
+    return render(request, 'medicamentos.html')
