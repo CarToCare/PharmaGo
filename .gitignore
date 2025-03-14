@@ -1,3 +1,6 @@
 env/
 lnx/
 alex/
+*.pyc
+__pycache__/
+.env/
