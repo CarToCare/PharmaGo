@@ -25,15 +25,16 @@
                 <h2>Iniciar sesión</h2>
                 <p>Por favor, inicia sesión con tus datos </p>
 
-                <form class="formUser">
+                <form class="formUser" method="POST" action="{% url 'sIn' %}">
+                    {% csrf_token %}
                     <label>
                         <i class='bx bx-envelope'><box-icon name='envelope'></box-icon></i>
-                        <input type="text" id="correo" placeholder="Correo electrónico" required>
+                        <input type="text" id="correo" name="correo" placeholder="Correo electrónico" required>
                     </label>
 
                     <label>
                         <i class='bx bx-lock-alt'><box-icon name='lock-alt'></box-icon></i>
-                        <input type="password" id="contraseña" placeholder="Contraseña" required>
+                        <input type="password" id="contraseña" name="pass" placeholder="Contraseña" required>
                     </label>
                     
                     <input type="submit" value="Iniciar sesión">
