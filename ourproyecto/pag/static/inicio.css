@@ -11,6 +11,7 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    background-color: #ebedea;
 }
 
 
@@ -94,7 +95,7 @@ body {
 }
 
 .container ul li a:hover {
-    color: #344D5D;
+    color: #85c1e9;
 }
 
 /* Botón */
@@ -140,10 +141,7 @@ body {
     justify-content: center;
     align-items: center; 
     padding-bottom: 350px;
-    
-  
 }
-
 
 .content h1 {
     font-family: "Montserrat", sans-serif;
@@ -176,8 +174,7 @@ body {
     width: 80%;
     margin: auto;
     text-align: center;
-    padding-top: -50px;
-    margin-top: -350px;
+    padding-top: 50px; 
 }
 
 .row {
@@ -191,15 +188,97 @@ body {
 .collage-col {
     flex-basis: 30%;
     text-align: center;
+    position: relative;
+    top: -350px;
+    z-index: 2;
 }
 
 .collage-col img {
     width: 100%;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    filter: brightness(70%);
+    opacity: 0.6;
+   
 }
 
 .collage-col img:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer{
+    width: auto;
+    height: auto;
+    background-color:#49606e ;
+    padding-top: 40px;
+    color: #c5c2c2;
+    margin-top: -250px;
+}
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-content h3{
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+
+.footer-content p{
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+}
+
+.socials{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+
+.socials li{
+    margin: 0 10px;
+}
+
+.socials a{
+    text-decoration: none;
+    color:#fff;
+}
+
+.socials a i{
+    font-size: 1.1rem;
+    transition: color .4s ease;
+}
+
+.socials a:hover i{
+    color:#286a93;
+}
+
+.footer-bottom{
+    background-color:#344D5D;
+    width: auto;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-bottom p{
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
 }
