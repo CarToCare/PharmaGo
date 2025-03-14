@@ -1,2 +1,5 @@
 env/
 lnx/
+*.pyc
+__pycache__/
+.env/
