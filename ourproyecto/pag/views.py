@@ -9,3 +9,6 @@ def iniciar_sesion(request):
 
 def inicio(request):
     return render(request, 'inicio.html')
+
+def prototipo(request):
+    return render(request, 'prototipo.html')
