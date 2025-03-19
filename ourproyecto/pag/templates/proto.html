@@ -16,15 +16,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     {% load static %}
-    <link rel="stylesheet" href="{% static 'prototipo.css' %}">  
+    <link rel="stylesheet" href="{% static 'proto.css' %}">  
 
     <title>PharmaGo</title>
 </head>
 <body>
- 
-    <div class="fondo"></div>
-    <div class="capa"></div>
-
 
 <div class="container-fluid">
     <div class="container">
@@ -37,31 +33,18 @@
             <li><a href="">Prototipo</a></li>
         </ul>
     </div>
-
-  
-
-
-    <section class="collage">
-        <h2></h2> 
-
-        <br>
-    
-        <div class="row">
-            <div class="collage-col">
-                <h3>Entregas</h3> 
-                <img src="/static/recursos/fondito.jpeg"> 
-            </div>
-    
-            <div class="collage-col">
-                <h3>Prototipo</h3> 
-                <img src="/static/recursos/fondito.jpeg">
-                 
-            </div>
+ 
+    <div class="content-wrapper">
+        <div class="left-container">
+            <h2>Información de la Batería</h2>
+            <p>Estado de la batería: 85% </p>
         </div>
-    </section>
-    
-   
-
+        <div class="divider"></div>
+        <div class="right-container">
+            <h2>Estado</h2>
+            <p>Sistema funcionando correctamente</p>
+        </div>
+    </div>
 </div>
 </body>
 </html>
