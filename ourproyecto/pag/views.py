@@ -12,3 +12,6 @@ def inicio(request):
 
 def proto(request):
     return render(request, 'proto.html')
+
+def medicamentos(request):
+    return render(request, 'medicamentos.html')
