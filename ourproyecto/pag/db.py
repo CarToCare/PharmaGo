@@ -7,3 +7,5 @@ def getOnePaciente(id):
 def getPacientes():
     p=pacientes_coll.find()
     return p;
+
+def actualizarContrasena()
