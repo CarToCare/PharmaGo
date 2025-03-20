@@ -23,3 +23,6 @@ def proto(request):
     p=proto_coll.find()
     print(p[0]['idUsuario'])
     return render(request, 'proto.html',{'proto':p[0]})
+
+def medicamentos(request):
+    return render(request, 'medicamentos.html')
