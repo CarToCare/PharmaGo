@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.models import User
-from .models import usuarios_coll
+from .models import usuarios_coll, proto_coll
 
 # Create your views here.
 def principal(request):
@@ -18,3 +18,8 @@ def sIn(request):
         pas=request.POST.get('pass')
     u=usuarios_coll.find_one( {"correoElectronico":email})
     return HttpResponse(u)
+
+def proto(request):
+    p=proto_coll.find()
+    print(p[0]['idUsuario'])
+    return render(request, 'proto.html',{'proto':p[0]})
