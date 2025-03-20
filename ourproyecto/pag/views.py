@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.models import User
-from .models import usuarios_coll, proto_coll
+from .models import usuarios_coll, proto_coll, entregas_coll
 
 # Create your views here.
 def principal(request):
@@ -11,6 +11,10 @@ def iniciar_sesion(request):
 
 def inicio(request):
     return render(request, 'inicio.html')
+
+def entregas(request):
+    e=entregas_coll.find();
+    return render(request, 'entregas.html', {'entregas': e})
 
 def sIn(request):
     if request.method =='POST':
