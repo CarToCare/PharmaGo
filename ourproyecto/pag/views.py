@@ -15,3 +15,6 @@ def proto(request):
 
 def medicamentos(request):
     return render(request, 'medicamentos.html')
+
+def pacientes(request):
+    return render(request, 'pacientes.html')
