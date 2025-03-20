@@ -4,48 +4,69 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="icon" type="image/png" href="im.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
     {% load static %}
     <link rel="stylesheet" href="{% static 'principal.css' %}">  
-
     <title>PharmaGo</title>
 </head>
 <body>
- 
+
     <div class="fondo"></div>
     <div class="capa"></div>
 
+    <input type="checkbox" id="modal-que-es" class="modal-checkbox">
+    <input type="checkbox" id="modal-nosotros" class="modal-checkbox">
+    <input type="checkbox" id="modal-contacto" class="modal-checkbox">
 
-<div class="container-fluid">
-    <div class="container">
-        <h2>PharmaGo</h2>
-        <ul>
-            <li><a href="">¿Qué es?</a></li>
-            <li><a href="">Nosotros</a></li>
-            <li><a href="">Contacto</a></li>
-        </ul>
+    <div class="container-fluid">
+        <div class="container">
+            <h2>PharmaGo</h2>
+            <ul>
+                <li><label for="modal-que-es" class="modal-trigger">¿Qué es?</label></li>
+                <li><label for="modal-nosotros" class="modal-trigger">Nosotros</label></li>
+                <li><label for="modal-contacto" class="modal-trigger">Contacto</label></li>
+            </ul>
+        </div>
+
+        <div class="content" id="inicio">
+            <h1>Bienvenido</h1>
+            <p>Administración médica simplificada para profesionales</p>
+            <a href="{% url 'iniciar_sesion' %}" class="btn">Iniciar sesión </a>
+        </div>
     </div>
 
-    <div class="content" id="inicio">
-        <h1>Bienvenido</h1>
-        <p>Administración médica simplificada para profesionales</p>
-        <a href="{% url 'iniciar_sesion' %}" class="btn">Iniciar sesión</a>
-
+    <div class="modal" id="modal-que-es-contenedor">
+        <div class="contenedor">
+            <header>¿Qué es PharmaGo?</header>
+            <label for="modal-que-es" class="close-btn"><box-icon name='x' animation='tada' color="#2e4053"></box-icon></label>
+            <div class="contenido">
+                <p>PharmaGo es una plataforma diseñada para simplificar la administración médica, facilitando la gestión de medicamentos y suministros para profesionales de la salud.</p>
+            </div>
+        </div>
     </div>
-</div>
 
-<!-- <video muted autoplay loop>
-    <source src="veterinaria.mp4" type="video/mp4">
-</video>
-<div class="capa"></div> -->
+    <div class="modal" id="modal-nosotros-contenedor">
+        <div class="contenedor">
+            <header>Acerca de nosotros</header>
+            <label for="modal-nosotros" class="close-btn"><box-icon name='x' animation='tada' color="#2e4053"></box-icon></label>
+            <div class="contenido">
+                <p>Nosotros somos bla bla bla.</p>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal" id="modal-contacto-contenedor">
+        <div class="contenedor">
+            <header>Contacto</header>
+            <label for="modal-contacto" class="close-btn"><box-icon name='x' animation='tada' color="#2e4053"></box-icon></label>
+            <div class="contenido">
+                <p>Puedes contactarnos en blaba </p>
+            </div>
+        </div>
+    </div>
+
+    
 </body>
 </html>

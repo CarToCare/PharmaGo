@@ -10,5 +10,8 @@ def iniciar_sesion(request):
 def inicio(request):
     return render(request, 'inicio.html')
 
+def proto(request):
+    return render(request, 'proto.html')
+
 def medicamentos(request):
     return render(request, 'medicamentos.html')

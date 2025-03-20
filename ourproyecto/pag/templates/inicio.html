@@ -50,7 +50,9 @@
     
         <div class="row">
             <div class="collage-col">
-               <img src="/static/recursos/fondito.jpeg" alt="Medicamentos">
+                <a href="{% url 'medicamentos' %}">
+                <img src="/static/recursos/fondito.jpeg" alt="Medicamentos">
+                </a>
                 <h3>Medicamentos</h3>  
             </div>
     
@@ -71,7 +73,9 @@
             </div>
     
             <div class="collage-col">
+                <a href="{% url 'proto' %}">
                 <img src="/static/recursos/fondito.jpeg" alt="Prototipo">
+            </a>
                 <h3>Prototipo</h3>  
             </div>
         </div>
@@ -90,10 +94,9 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 PharmaGo. Todos los derechos reservados. Diseñado por <span>name empresa</span></p>
+            <p>&copy; 2025 PharmaGo. Todos los derechos reservados. Diseñado por <span>HealthTech Robotics</span></p>
         </div>
     </footer>
-
 
 </div>
 </body>
