@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.models import User
 from .models import usuarios_coll, proto_coll, entregas_coll
+from .db import getOnePaciente, getPacientes
 
 # Create your views here.
 def principal(request):
@@ -30,3 +31,12 @@ def proto(request):
 
 def medicamentos(request):
     return render(request, 'medicamentos.html')
+
+def pacientes(request):
+    pc=getPacientes()
+    return render(request, 'pacientes.html', {'pacientes':pc});
+
+def test(request):
+    p=getPacientes("PAC-001")
+    print(p)
+    return HttpResponse(p)
