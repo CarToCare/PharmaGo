@@ -3,7 +3,7 @@ from db_con import db
 
 usuarios_coll=db['usuarios']
 med_coll=db['medicamentos']
-proto_coll=db['prototipo']
+proto_coll=db['prototipos']
 entregas_coll=db['entregas']
 pacientes_coll=db['pacientes']
 recetas_coll=db['recetas']

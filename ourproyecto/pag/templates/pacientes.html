@@ -44,36 +44,21 @@
       </div>
 
     <ol class="list-group list-group-numbered">
+      {% for paciente in pacientes %}
         <li class="list-group-item d-flex justify-content-between align-items-start">
           <div class="ms-2 me-auto">
-            <div class="fw-bold"><box-icon name='user' type='solid' ></box-icon> <span>Paciente 1 </span> </div>
-            (Caracteristicas)
+            <div class="fw-bold"><box-icon name='user' type='solid' ></box-icon> <span>{{paciente.idPaciente}} </span> </div>
+            <strong>Nombre:</strong> {{paciente.nombrePaciente}}
+            <strong>Fecha de nacimiento:</strong> {{paciente.fechaNacimientoPaciente}}
+            <strong>Genero:</strong> {{paciente.generoPaciente}}
+            <strong>Habitación:</strong> {{paciente.habitacionPaciente}}
+            {% for alergia in paciente.alergiasPaciente %}
+            {{alergia}}
+            {% endfor %}
+            <strong>Riesgo de caida:</strong> {{paciente.riesgoCaida}}
           </div>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold"><box-icon name='user' type='solid' ></box-icon> <span>Paciente 2 </span> </div>
-            (Caracteristicas)
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold"><box-icon name='user' type='solid' ></box-icon> <span>Paciente 3 </span> </div>
-            (Caracteristicas)
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold"><box-icon name='user' type='solid' ></box-icon> <span>Paciente 4 </span> </div>
-              (Caracteristicas)
-            </div>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold"><box-icon name='user' type='solid' ></box-icon> <span>Paciente 5 </span> </div>
-              (Caracteristicas)
-            </div>
-          </li>
+        {% endfor %}
       </ol>
 
 

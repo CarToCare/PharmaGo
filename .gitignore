@@ -4,5 +4,3 @@ lnx/
 __pycache__/
 .env/
 alex/
-__pycache__/
-*.pyc
