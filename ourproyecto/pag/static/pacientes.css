@@ -1,0 +1,151 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    /* outline: 1px solid red; */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #d6dbdf ,#eaeded);
+    height: 100vh;
+}
+
+
+/*Contenedor */
+.container-fluid {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    all: unset;
+    width: auto;
+    height: 80px;
+    background: linear-gradient(90deg, #5d6d7e, #344D5D);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 25px;
+}
+
+.container h2 {
+    color: #d6dbdf;
+    font-weight: bold;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.container ul {
+    display: flex;
+}
+
+.container ul li {
+    list-style: none;
+    margin-right: 50px;
+}
+
+.container ul li a  {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container span{
+    position: relative;
+    top: 5px;
+}
+
+.container ul li a:hover {
+    color: #b4c3f6;
+}
+
+
+/* Lista */
+.list-group.list-group-numbered{
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    opacity: 0.8; 
+    
+}
+
+.list-group-item.d-flex.justify-content-between.align-items-start{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #424949;
+    background: linear-gradient(90deg, #d6dbdf ,#eaeded);
+}
+
+.list-group-item span {
+    position: relative;
+    top: -3px;
+  }
+
+  .header-box {
+    background: linear-gradient(90deg, #5d6d7e, #616a6b);
+    color: white;
+    padding: 15px;
+    border-radius: 0px;
+    margin: 10px 50px; 
+    text-align: center;
+    margin-top: 30px; 
+    margin-bottom: 0;
+  }
+  
+  /* Botón */
+.content .btn {
+    font-family: "Montserrat", sans-serif;
+    background-color: #45667a;
+    margin-top: -15px;
+    padding: 14px 40px;
+    color: #fff;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    border: 2px solid #355162;
+    transition: .4s;
+    text-decoration: none;
+}
+
+.btn span:last-child {
+    display: none;
+}
+
+.btn:hover {
+    transition: .4s;
+    border: 2px solid #344D5D;
+    background-color: #fafafa;
+    color: #344D5D;
+}
+
+.btn:active {
+    background-color: #49606e;
+    color: #fff;
+}
+
+.content {
+    width: auto;
+    height: auto; 
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.icono-usuario {
+    position: relative;
+    top: 10px;
+  }
+
+.icono-regresar{
+    position: relative;
+    top: 10px;
+}
+  

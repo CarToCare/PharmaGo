@@ -11,7 +11,7 @@ body {
     padding-left: 15%;
     justify-content: left;
     height: auto;
-    background-image: linear-gradient(to right, #D4E6F1 8%,  #7da0b6 50%);
+    background-image: linear-gradient(to right, #D4E6F1 8%,  #fcedbb 50%);
 }
 
 .formulario {
@@ -32,6 +32,7 @@ body {
     text-align: center;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    background-color: aqua;
 }
 
 .contenidoDos { 
