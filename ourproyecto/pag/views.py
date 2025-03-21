@@ -57,3 +57,6 @@ def sIn(request):
         print("no existe")
     return HttpResponse(u)
 
+def registro(request):
+    return render(request, 'registro.html')
+
