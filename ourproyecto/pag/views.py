@@ -53,6 +53,7 @@ def sIn(request):
                     telefono=u['datosComplementarios']['telefono']
                 )
             user=authenticate(correo=u['correoElectronico'], password=u['password'])
+            print(user.password)
             if user is not None:
                 login(request,user)
                 response=redirect('inicio')
