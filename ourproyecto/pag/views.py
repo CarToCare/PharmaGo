@@ -8,8 +8,8 @@ from .db import getOnePaciente, getPacientes
 def principal(request):
     return render(request, 'principal.html')
 
-def iniciar_sesion(request):
-    return render(request, 'iniciar_sesion.html')
+def sesion(request):
+    return render(request, 'sesion.html')
 
 def inicio(request):
     return render(request, 'inicio.html')
