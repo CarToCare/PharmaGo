@@ -60,3 +60,5 @@ def sIn(request):
 def registro(request):
     return render(request, 'registro.html')
 
+def recetas(request):
+    return render(request, 'recetas.html')
