@@ -8,4 +8,3 @@ def getPacientes():
     p=pacientes_coll.find()
     return p;
 
-def actualizarContrasena()
