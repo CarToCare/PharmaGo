@@ -40,17 +40,17 @@
             <div class="form-content">
                 <h2>Iniciar sesión</h2>
                 <p>Por favor, inicia sesión con tus datos</p>
-                <form class="user-form">
-
+                <form class="user-form" method="POST" action="{% url 'sIn' %}">
+                    {% csrf_token %}
                     <label>
                         <i class='bx bx-envelope'><box-icon name='envelope' color='#154360'></box-icon></i>
-                        <input type="text" placeholder="Correo electronico">
+                        <input type="text" name="correo" placeholder="Correo electronico">
                     </label>
                     <label>
                         <i class='bx bx-lock-alt'><box-icon name='lock-alt' color='#154360'></box-icon></i>
-                        <input type="password" placeholder="Contraseña">
+                        <input type="password" name="pass" placeholder="Contraseña">
                     </label>
-                    <input type="button" value="Iniciar sesión">
+                    <input type="submit" value="Iniciar sesión">
                 </form>
             </div>
         </div>
