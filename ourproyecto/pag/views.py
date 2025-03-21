@@ -18,3 +18,7 @@ def medicamentos(request):
 
 def pacientes(request):
     return render(request, 'pacientes.html')
+
+def registro(request):
+    return render(request, 'registro.html')
+
