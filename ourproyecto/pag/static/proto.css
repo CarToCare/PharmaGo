@@ -19,6 +19,8 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;
 }
 
 .container {
@@ -76,8 +78,12 @@ body {
 .content-wrapper {
     display: flex;
     flex: 1;
-    width: 100%;
+    width: 80%;
     height: calc(100vh - 80px);
+}
+
+.content-wrapper h2 {
+    color:#7e645d;
 }
 
 .left-container, .right-container {
@@ -95,7 +101,7 @@ body {
 
 .divider {
     width: 2px;
-    background-color: #f91515; /* #ccc*/
+    background-color: #ccc; /* #ccc*/
     height: 80%;
     align-self: center;
 }
