@@ -19,7 +19,6 @@ body {
     display: flex;
     height: 70vh; /* Si pongo 100vh, se ocupa la pantalla completa */
     width: 50vw; /* Si pongo 100vh, se ocupa la pantalla completa */
-
     transition: all 1s ease;
     margin: 0;
     border-top-left-radius: 20px;
@@ -32,7 +31,7 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
-    background-image: linear-gradient(60deg, #85929e, #1f354a);
+    background-image: linear-gradient(60deg, #85929e, #151312);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
