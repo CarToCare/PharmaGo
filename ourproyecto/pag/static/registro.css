@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    /* outline: 1px solid red; */
 }
 
 body {
@@ -16,7 +15,7 @@ body {
 
 /*Contenedor */
 .container-fluid {
-    padding: 0px;
+    padding: 0;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -24,8 +23,7 @@ body {
 }
 
 .container {
-    all: unset;
-    width: auto;
+     all: unset;
     height: 80px;
     background: linear-gradient(90deg, #5d6d7e, #344D5D);
     display: flex;
