@@ -23,7 +23,7 @@ body {
 
 .container {
     height: 80px;
-    background: linear-gradient(90deg, #5d6d7e, #5d3434); 
+    background: linear-gradient(90deg, #5d6d7e,  #344D5D); 
     display: flex;
     justify-content: space-between;
     align-items: center;
