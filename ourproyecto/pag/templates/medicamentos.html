@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="{% static 'im.png' %}">
+    <link rel="icon" type="image/png" href="im.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,72 +32,43 @@
     </div>
 
     <div class="medicamentos-container">
-        
-    </div>
-</div>
-
-<script>
-    //ejemplo
-    const medicamentos = [
-        {
-            _id: "67ccb51b15eeb5a322decc79",
-            idMedicamento: "MED-001",
-            nombreMedicamento: "Paracetamol",
-            ingredienteActivo: "Paracetamol",
-            entradas: [
-                { fecha: "2025-03-08T21:22:35.920+00:00", cantidad: 150, motivo: "Compra inicial" },
-                { fecha: "2025-03-08T23:28:19.387+00:00", cantidad: 50, motivo: "Reabastecimiento" }
-            ],
-            salidas: [],
-            status: true,
-            claveMedicamento: "N02BE01"
-        }
-    ];
-
-    //funcion opar arenderizar
-    function renderMedicamentos() {
-        const container = document.querySelector('.medicamentos-container');
-        container.innerHTML = '';
-
-        medicamentos.forEach(medicamento => {
-            const medicamentoDiv = document.createElement('div');
-            medicamentoDiv.className = 'medicamento';
-
-            medicamentoDiv.innerHTML = `
-                <h3>${medicamento.nombreMedicamento}</h3>
-                <p><strong>ID:</strong> ${medicamento.idMedicamento}</p>
-                <p><strong>Ingrediente Activo:</strong> ${medicamento.ingredienteActivo}</p>
-                <p><strong>Clave:</strong> ${medicamento.claveMedicamento}</p>
-                <p><strong>Status:</strong> ${medicamento.status ? 'Activo' : 'Inactivo'}</p>
+        {% for medicamento in medicamentos %}
+            <div class="medicamento">
+                <h3>{{ medicamento.nombreMedicamento }}</h3>
+                <p><strong>ID:</strong> {{ medicamento.idMedicamento }}</p>
+                <p><strong>Ingrediente Activo:</strong> {{ medicamento.ingredienteActivo }}</p>
+                <p><strong>Clave:</strong> {{ medicamento.claveMedicamento }}</p>
+                <p><strong>Status:</strong> {% if medicamento.status %}Activo{% else %}Inactivo{% endif %}</p>
+                
                 <h4>Entradas:</h4>
                 <ul>
-                    ${medicamento.entradas.map(entrada => `
+                    {% for entrada in medicamento.entradas %}
                         <li>
-                            <strong>Fecha:</strong> ${new Date(entrada.fecha).toLocaleDateString()} - 
-                            <strong>Cantidad:</strong> ${entrada.cantidad} - 
-                            <strong>Motivo:</strong> ${entrada.motivo}
+                            <strong>Fecha:</strong> {{ entrada.fecha|date:"d/m/Y" }} - 
+                            <strong>Cantidad:</strong> {{ entrada.cantidad }} - 
+                            <strong>Motivo:</strong> {{ entrada.motivo }}
                         </li>
-                    `).join('')}
+                    {% endfor %}
                 </ul>
+
                 <h4>Salidas:</h4>
                 <ul>
-                    ${medicamento.salidas.length > 0 ? medicamento.salidas.map(salida => `
-                        <li>
-                            <strong>Fecha:</strong> ${new Date(salida.fecha).toLocaleDateString()} - 
-                            <strong>Cantidad:</strong> ${salida.cantidad} - 
-                            <strong>Motivo:</strong> ${salida.motivo}
-                        </li>
-                    `).join('') : '<li>No hay salidas registradas</li>'}
+                    {% if medicamento.salidas %}
+                        {% for salida in medicamento.salidas %}
+                            <li>
+                                <strong>Fecha:</strong> {{ salida.fecha|date:"d/m/Y" }} - 
+                                <strong>Cantidad:</strong> {{ salida.cantidad }} - 
+                                <strong>Motivo:</strong> {{ salida.motivo }}
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No hay salidas registradas</li>
+                    {% endif %}
                 </ul>
-            `;
-
-            container.appendChild(medicamentoDiv);
-        });
-    }
-
-//llamada a la funciin
-    document.addEventListener('DOMContentLoaded', renderMedicamentos);
-</script>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
 </body>
 </html>

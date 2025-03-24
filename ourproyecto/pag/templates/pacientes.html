@@ -49,13 +49,13 @@
           <div class="ms-2 me-auto">
             <div class="fw-bold"><box-icon name='user' type='solid' ></box-icon> <span>{{paciente.idPaciente}} </span> </div>
             <strong>Nombre:</strong> {{paciente.nombrePaciente}}
-            <strong>Fecha de nacimiento:</strong> {{paciente.fechaNacimientoPaciente}}
-            <strong>Genero:</strong> {{paciente.generoPaciente}}
-            <strong>Habitación:</strong> {{paciente.habitacionPaciente}}
-            {% for alergia in paciente.alergiasPaciente %}
-            {{alergia}}
+            <strong>| Fecha de nacimiento:</strong> {{paciente.fechaNacimientoPaciente}}
+            <strong>| Genero:</strong> {{paciente.generoPaciente}}
+            <strong>| Habitación:</strong> {{paciente.habitacionPaciente}}
+            <strong>| Alergias:</strong> {% for alergia in paciente.alergiasPaciente %}
+            {{alergia}}<string>. </string>
             {% endfor %}
-            <strong>Riesgo de caida:</strong> {{paciente.riesgoCaida}}
+            <strong>| Riesgo de caida:</strong> {{paciente.riesgoCaida}}
           </div>
         </li>
         {% endfor %}

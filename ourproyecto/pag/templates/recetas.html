@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="im.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'recetas.css' %}">  
+
+    <title>PharmaGo</title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="container">
+        <h2>Recetas Médicas</h2>
+        <ul>
+            <li> <a href="{% url 'inicio' %}"><box-icon name='log-in-circle' type='solid' animation='tada' color="#d6dbdf"></box-icon>
+                <span> Regresar </span></a></li>
+        </ul>
+    </div>
+
+    {% for receta in recetas %}
+    <div class="card">
+        <div class="title">{{ receta.idReceta }}</div>
+        <div class="field">
+            <strong>ID Paciente:</strong> {{ receta.idPaciente }}
+        </div>
+        <div class="field">
+            <strong>Medicamentos:</strong>
+            <ul>
+                {% for med in receta.medicamentos %}
+                <li>
+                    <strong>ID Medicamento:</strong> {{ med.idMedicamento }}<br>
+                    <strong>Cantidad:</strong> {{ med.cantidad }}<br>
+                    <strong>Hora Inicial:</strong> {{ med.horaInicial }}<br>
+                    <strong>Periodicidad:</strong> {{ med.periodicidad }}<br>
+                    <strong>Fecha Inicio:</strong> {{ med.fechaInicio|date:"d/m/Y" }}<br>
+                    <strong>Fecha Fin:</strong> {{ med.fechaFin|date:"d/m/Y" }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

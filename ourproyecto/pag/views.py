@@ -24,7 +24,8 @@ def proto(request):
     return render(request, 'proto.html',{'proto':p[0]})
 
 def medicamentos(request):
-    return render(request, 'medicamentos.html')
+    med = med_coll.find()
+    return render(request, 'medicamentos.html', {'medicamentos': med})
 
 def pacientes(request):
     pc=getPacientes()
@@ -72,3 +73,6 @@ def sIn(request):
 def registro(request):
     return render(request, 'registro.html')
 
+def recetas(request):
+    r = recetas_coll.find()
+    return render(request, 'recetas.html', {'recetas': r})
