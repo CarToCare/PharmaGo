@@ -50,12 +50,12 @@
             <div class="fw-bold"><box-icon name='user' type='solid' ></box-icon> <span>{{paciente.idPaciente}} </span> </div>
             <strong>Nombre:</strong> {{paciente.nombrePaciente}}
             <strong>Fecha de nacimiento:</strong> {{paciente.fechaNacimientoPaciente}}
-            <strong>Genero:</strong> {{paciente.generoPaciente}}
+            <strong>Género:</strong> {{paciente.generoPaciente}}
             <strong>Habitación:</strong> {{paciente.habitacionPaciente}}
             {% for alergia in paciente.alergiasPaciente %}
             {{alergia}}
             {% endfor %}
-            <strong>Riesgo de caida:</strong> {{paciente.riesgoCaida}}
+            <strong>Riesgo de caída:</strong> {{paciente.riesgoCaida}}
           </div>
         </li>
         {% endfor %}
