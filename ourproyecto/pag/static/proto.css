@@ -21,7 +21,7 @@ body {
     flex-direction: column;
     justify-content: flex-start; 
     align-items: center;
-    margin-top: 250px;
+    margin-top: -360px;
 }
 
 .container {
@@ -155,10 +155,10 @@ body {
 .content p {
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 40px;
     color: lightgray;
     line-height: 35px;
-    padding: 20px 5vw;
+    padding: 20px 7vw;
     width: 50vw;
     max-width: 800px;
     text-align: center; 
