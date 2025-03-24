@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from .models import usuarios_coll, proto_coll, entregas_coll
+from .models import usuarios_coll, proto_coll, entregas_coll, recetas_coll, med_coll
 from .db import getOnePaciente, getPacientes
 
 # Create your views here.
@@ -24,7 +24,8 @@ def proto(request):
     return render(request, 'proto.html',{'proto':p[0]})
 
 def medicamentos(request):
-    return render(request, 'medicamentos.html')
+    med = med_coll.find()
+    return render(request, 'medicamentos.html', {'medicamentos': med})
 
 def pacientes(request):
     pc=getPacientes()
@@ -61,4 +62,5 @@ def registro(request):
     return render(request, 'registro.html')
 
 def recetas(request):
-    return render(request, 'recetas.html')
+    r = recetas_coll.find()
+    return render(request, 'recetas.html', {'recetas': r})

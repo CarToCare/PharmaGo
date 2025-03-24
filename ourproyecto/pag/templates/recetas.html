@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% load static %}
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="{% static 'im.png' %}">
+    <link rel="icon" type="image/png" href="im.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    
+    {% load static %}
     <link rel="stylesheet" href="{% static 'recetas.css' %}">  
 
     <title>PharmaGo</title>
@@ -29,62 +29,30 @@
         </ul>
     </div>
 
-    <div class="recetas-container">
-        
+    {% for receta in recetas %}
+    <div class="card">
+        <div class="title">{{ receta.idReceta }}</div>
+        <div class="field">
+            <strong>ID Paciente:</strong> {{ receta.idPaciente }}
+        </div>
+        <div class="field">
+            <strong>Medicamentos:</strong>
+            <ul>
+                {% for med in receta.medicamentos %}
+                <li>
+                    <strong>ID Medicamento:</strong> {{ med.idMedicamento }}<br>
+                    <strong>Cantidad:</strong> {{ med.cantidad }}<br>
+                    <strong>Hora Inicial:</strong> {{ med.horaInicial }}<br>
+                    <strong>Periodicidad:</strong> {{ med.periodicidad }}<br>
+                    <strong>Fecha Inicio:</strong> {{ med.fechaInicio|date:"d/m/Y" }}<br>
+                    <strong>Fecha Fin:</strong> {{ med.fechaFin|date:"d/m/Y" }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
+    {% endfor %}
 </div>
-
-<script>
-    //simulacion
-    const recetas = [
-        {
-            idReceta: "REC-001",
-            idPaciente: "PAC-001",
-            medicamentos: [
-                {
-                    idMedicamento: "MED-001",
-                    cantidad: 2,
-                    horaInicial: "08:00",
-                    periodicidad: "Cada 8 horas",
-                    fechaInicio: new Date(),
-                    fechaFin: new Date("2025-03-10")
-                }
-            ]
-        }
-    ];
-
-    function renderRecetas() {
-        const container = document.querySelector('.recetas-container');
-        container.innerHTML = '';
-
-        recetas.forEach(receta => {
-            const recetaDiv = document.createElement('div');
-            recetaDiv.className = 'receta';
-
-            recetaDiv.innerHTML = `
-                <h3> ${receta.idReceta}</h3>
-                <p><strong>ID Paciente:</strong> ${receta.idPaciente}</p>
-                <h4>Medicamentos:</h4>
-                <ul>
-                    ${receta.medicamentos.map(med => `
-                        <li>
-                            <strong>ID Medicamento:</strong> ${med.idMedicamento}<br>
-                            <strong>Cantidad:</strong> ${med.cantidad}<br>
-                            <strong>Hora Inicial:</strong> ${med.horaInicial}<br>
-                            <strong>Periodicidad:</strong> ${med.periodicidad}<br>
-                            <strong>Fecha Inicio:</strong> ${new Date(med.fechaInicio).toLocaleDateString()}<br>
-                            <strong>Fecha Fin:</strong> ${new Date(med.fechaFin).toLocaleDateString()}
-                        </li>
-                    `).join('')}
-                </ul>
-            `;
-
-            container.appendChild(recetaDiv);
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', renderRecetas);
-</script>
 
 </body>
 </html>
