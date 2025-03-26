@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
-from .models import usuarios_coll, proto_coll, entregas_coll
+from django.contrib.auth import authenticate, login
+from .models import usuarios_coll, proto_coll, entregas_coll, CustomUser, recetas_coll, med_coll
 from .db import getOnePaciente, getPacientes
 
 # Create your views here.
