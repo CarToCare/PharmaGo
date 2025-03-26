@@ -47,7 +47,8 @@
                 <h2>Datos del paciente</h2>
                 <p>Completa la información requerida para registrar al paciente.</p>
       
-                <form class="user-form">
+                {% csrf_token %}
+                <form class="user-form" method="post" action="/regPac">
                   <label>
                     <i class='bx bx-user'><box-icon name='user' color='#154360'></box-icon></i>
                     <input type="text" placeholder="Nombre completo">

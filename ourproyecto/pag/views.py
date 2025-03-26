@@ -61,6 +61,10 @@ def sIn(request):
 def registro(request):
     return render(request, 'registro.html')
 
+def regPac(request):
+    
+    return
+
 def recetas(request):
     r = recetas_coll.find()
     return render(request, 'recetas.html', {'recetas': r})
