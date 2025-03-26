@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-from .models import usuarios_coll, proto_coll, entregas_coll, CustomUser, recetas_coll, med_coll
+from .models import usuarios_coll, proto_coll, entregas_coll, CustomUser, recetas_coll, med_coll, pacientes_coll
 from .db import getOnePaciente, getPacientes
+import re
 
 # Create your views here.
 def principal(request):
@@ -73,9 +74,47 @@ def sIn(request):
 def registro(request):
     return render(request, 'registro.html')
 
+def generar_id_paciente():
+    ultimo_paciente = pacientes_coll.find_one({}, sort=[("idPaciente", -1)])
+
+    if ultimo_paciente and "idPaciente" in ultimo_paciente:
+        match = re.search(r'PAC-(\d+)', ultimo_paciente["idPaciente"])
+        if match:
+            nuevo_numero = int(match.group(1)) + 1
+            return f"PAC-{nuevo_numero:03d}"
+
+    return "PAC-001"
+
 def regPac(request):
-    
-    return
+    if request.method == 'POST':
+        id_paciente = request.POST.get('idPaciente')
+        nombre_paciente = request.POST.get('nombrePaciente')
+        fecha_nacimiento = request.POST.get('fechaNacimientoPaciente')
+        cama_paciente = int(request.POST.get('camaPaciente')) 
+        alergias = request.POST.get('alergiasPaciente').split(',')
+        riesgo_caida = request.POST.get('riesgoCaida')
+        genero_paciente = request.POST.get('generoPaciente')
+        habitacion_paciente = int(request.POST.get('habitacionPaciente')) 
+
+        id_paciente = generar_id_paciente()
+
+        data = {
+            'idPaciente': id_paciente,
+            'nombrePaciente': nombre_paciente,
+            'fechaNacimientoPaciente': fecha_nacimiento,
+            'camaPaciente': cama_paciente,
+            'alergiasPaciente': alergias,
+            'riesgoCaida': riesgo_caida,
+            'generoPaciente': genero_paciente,
+            'habitacionPaciente': habitacion_paciente,
+            'status': True,
+        }
+
+        pacientes_coll.insert_one(data)
+
+        return redirect('pacientes')
+
+    return render(request, 'registro.html')
 
 def recetas(request):
     r = recetas_coll.find()
