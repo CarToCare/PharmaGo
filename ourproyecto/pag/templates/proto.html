@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
     
     {% load static %}
     <link rel="stylesheet" href="{% static 'proto.css' %}">  
@@ -24,31 +23,65 @@
 </head>
 <body>
 
-<div class="container-fluid">
+    <div class="fondo"></div>
+    <div class="capa"></div>
+
     <div class="container">
-        <h2>Prototipo</h2>
+        <h2><box-icon name='cart-download' type='solid' size='40px'  color="#d6dbdf" class="icono-usuario"></box-icon> Prototipo</h2>
         <ul>
-            <li> <a href="{% url 'inicio' %}"><box-icon name='log-in-circle' type='solid' animation='tada' color="#d6dbdf"></box-icon>
+            <li> <a href="{% url 'inicio' %}"><box-icon name='log-in-circle' type='solid' animation='tada' color="#d6dbdf" class="icono-regresar"></box-icon>
                 <span> Regresar </span></a></li>
-        </ul>
+        </ul>   
     </div>
- 
+
+
+    <div class="content" id="inicio">
+        <p>Bienvenido al prototipo de PharmaGo</p>
+    </div>
+
+
+<div class="container-fluid"> 
+
     <div class="content-wrapper">
         <div class="left-container">
+            <box-icon name='car-battery' type='solid' size='130px' color='#283747' ></box-icon>
             <h2>Información de la Batería</h2>
+            <br>
             <p>{{proto.voltaje}} </p>
         </div>
         <div class="divider"></div>
         <div class="right-container">
+            <box-icon name='line-chart' size='130px' color='#283747'></box-icon>
             <h2>Latitud y Longitud</h2>
+            <br>
             <p>Latitud: {{proto.latitud}} Longitud: {{proto.longitud}}</p>
         </div>
     </div>
+    
+
+     <div class="content-wrapper">
+        <div class="left-container">
+            <box-icon name='stats' size='130px' color='#283747'></box-icon>
+            <h2>Estado</h2>
+            <br>
+            <p>{{proto.estado}}</p>
+        </div>
+        <div class="divider"></div>
+        <div class="right-container">
+            <box-icon type='solid' name='face' size='130px' color='#283747'></box-icon>
+            <h2>Médico Encargado</h2>
+            <br>
+            <p>{{proto.medico_encargado}}</p>
+        </div>
+    </div>
+    
 <script>
     setTimeout(function(){
         window.location.reload();
     }, 10000);
 </script>
 </div>
+
+
 </body>
 </html>

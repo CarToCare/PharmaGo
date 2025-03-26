@@ -26,7 +26,7 @@
 
 <div class="container-fluid">
     <div class="container">
-        <h2>Entregas</h2>
+        <h2><box-icon type='solid' name='timer' size='40px'  color="#d6dbdf" class="icono-usuario"></box-icon> Entregas</h2>
         <ul>
             <li> <a href="{% url 'inicio' %}"><box-icon name='log-in-circle' type='solid' animation='tada' color="#d6dbdf"></box-icon>
                 <span> Regresar </span></a></li>
@@ -40,7 +40,7 @@
             <strong>Prototipo de distribución:</strong> {{entrega.idPrototipo}}
         </div>
         <div class="field">
-            <strong>Paciente que recivio:</strong> {{entrega.idPaciente}}
+            <strong>Paciente que recibio:</strong> {{entrega.idPaciente}}
         </div>
         <div class="field">
             <strong>Fecha de entrega:</strong> {{entrega.registroEntrega}}

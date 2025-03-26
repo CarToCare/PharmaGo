@@ -8,22 +8,25 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8;
+    background: linear-gradient(90deg, #d6dbdf ,#eaeded);
     height: 100vh;
 }
 
 /*Contenedor */
 .container-fluid {
+    padding: 0;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+    margin-top: -360px;
 }
 
 .container {
-    width: 100%;
     height: 80px;
-    background-color: #344D5D;
+    background: linear-gradient(90deg, #5d6d7e,  #344D5D); 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,7 +34,8 @@ body {
 }
 
 .container h2 {
-    color: #fff;
+    color: #d6dbdf;
+    font-weight: bold;
     font-size: 30px;
     cursor: pointer;
 }
@@ -53,19 +57,34 @@ body {
 
 .container span{
     position: relative;
-    top: -5px;
+    top: 5px;
 }
 
 .container ul li a:hover {
-    color: #85c1e9;
+    color: #b4c3f6;
 }
+
+.icono-usuario {
+    position: relative;
+    top: 10px;
+  }
+
+.icono-regresar{
+    position: relative;
+    top: 10px;
+}
+  
 
 /* Contenedor de abajo */
 .content-wrapper {
     display: flex;
     flex: 1;
-    width: 100%;
+    width: 80%;
     height: calc(100vh - 80px);
+}
+
+.content-wrapper h2 {
+    color: #273746;
 }
 
 .left-container, .right-container {
@@ -75,7 +94,7 @@ body {
     justify-content: flex-start;
     padding: 20px;
     align-items: center;
-    background-color: #e6ebef;
+    background-color: #f4f6f6;
     margin: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -83,7 +102,64 @@ body {
 
 .divider {
     width: 2px;
-    background-color: #ccc;
+    background-color: #ccc; /* #ccc*/
     height: 80%;
     align-self: center;
+}
+
+/* Imagen de fondo */
+.fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background-image: url("/static/recursos/imagen.jpeg"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.capa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, rgba(52, 77, 93, 0.7), rgba(52, 77, 93, 0.7)); 
+    z-index: -1;
+}
+
+/* Contenedor 2 */
+.content {
+    width: 1200px;
+    height: 100vh;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding-bottom: 350px;
+}
+
+.content h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    color: #fff;
+    font-size: 50px;
+
+}
+
+.content p {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: lightgray;
+    line-height: 35px;
+    padding: 20px 7vw;
+    width: 50vw;
+    max-width: 800px;
+    text-align: center; 
 }
