@@ -64,6 +64,8 @@ body {
     font-size: 30px;
     color: #fff;
     cursor: pointer;
+    margin-right: 90px;
+    margin-left:1px;
 }
 
 .container h3 {
@@ -99,7 +101,7 @@ body {
 }
 
 /* Botón */
-.content .btn {
+.container .btn {
     font-family: "Montserrat", sans-serif;
     background-color: #344D5D;
     margin-top: 30px;
@@ -214,7 +216,7 @@ body {
     background-color:#49606e ;
     padding-top: 40px;
     color: #c5c2c2;
-    margin-top: -250px;
+    margin-top: 500px;
 }
 .footer-content {
     display: flex;
