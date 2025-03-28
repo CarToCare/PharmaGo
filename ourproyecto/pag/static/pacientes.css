@@ -55,9 +55,9 @@ body {
     font-weight: bold;
 }
 
-.container span {
+.container span.span1 {
     position: relative;
-    top: 5px;
+    top: -5px; 
 }
 
 .container ul li a:hover {
@@ -166,7 +166,7 @@ body {
 
 .icono-regresar {
     position: relative;
-    top: 10px;
+    top: 1px;
 }
 
 /* Footer */
