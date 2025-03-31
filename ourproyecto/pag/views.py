@@ -39,17 +39,17 @@ def nuevo_idRec():
 
     if ultima_rec:
         ultimo_id = ultima_rec["idReceta"]
-        numero = int(ultimo_id.split("-")[1])  # Extrae el número de "REC-002"
+        numero = int(ultimo_id.split("-")[1]) #pa extraer el número de "REC-002"
         nuevo_numero = numero + 1
     else:
-        nuevo_numero = 1  # Si no hay recetas, empieza desde 1
+        nuevo_numero = 1 #empieza desde 1
 
-    return f"REC-{nuevo_numero:03d}"  # Formato: REC-001, REC-002, etc.
+    return f"REC-{nuevo_numero:03d}" #formato
 
 def registroRec(request):
     nuevo_id_rec = nuevo_idRec()
     pacientes = pacientes_coll.find()
-    medicamentos = list(med_coll.find())  # Convertir a lista
+    medicamentos = list(med_coll.find()) 
     
     return render(request, 'registroRec.html', {
         'nuevo_id_rec': nuevo_id_rec,
@@ -58,7 +58,7 @@ def registroRec(request):
         'medicamentos_json': json.dumps([{
             'idMedicamento': m['idMedicamento'],
             'nombreMedicamento': m['nombreMedicamento']
-        } for m in medicamentos])  # Convertir a JSON
+        } for m in medicamentos]) 
     })
 
 def regRec(request):
@@ -71,14 +71,12 @@ def regRec(request):
         medicamento_indices = set()
         for key in post_data:
             if key.startswith('medicamentos[') and '][idMedicamento]' in key:
-                # Extraer el índice del medicamento
                 index = key.split('[')[1].split(']')[0]
                 medicamento_indices.add(index)
         
-        # Procesar cada medicamento
         for index in medicamento_indices:
             id_medicamento = post_data.get(f'medicamentos[{index}][idMedicamento]')
-            if id_medicamento:  # Solo si se seleccionó un medicamento
+            if id_medicamento: 
                 fecha_inicio_str = post_data.get(f'medicamentos[{index}][fechaInicio]')
                 fecha_fin_str = post_data.get(f'medicamentos[{index}][fechaFin]')
 
