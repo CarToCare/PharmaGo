@@ -130,11 +130,12 @@ body {
     position: relative;
     top: 8px;
 }
+
 /* Footer */
 .footer{
     width: auto;
     height: auto;
-    background-color:#49606e;
+    background-color:#6e5049 ;
     padding-top: 40px;
     color: #c5c2c2;
     margin-top: 0;
