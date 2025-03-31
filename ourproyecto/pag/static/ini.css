@@ -39,8 +39,6 @@ body {
     z-index: 1;
 }
 
-
-
 /* Contenedor 1 */
 .container-fluid {
     width: 100%;
@@ -101,16 +99,16 @@ body {
 }
 
 /* Botón */
-.container .btn {
+.content .btn {
     font-family: "Montserrat", sans-serif;
-    background-color: #2c3e50;
+    background-color:#344D5D; 
     margin-top: 15px;
     padding: 14px 40px;
     color: #fff;
     letter-spacing: 2px;
     cursor: pointer;
     border-radius: 30px;
-    /*border: 2px solid #2c3e50;*/
+    border: 2px solid #2c3e50;
     transition: .4s;
     text-decoration: none;
     white-space: nowrap;
@@ -131,6 +129,25 @@ body {
 .btn:active {
     background-color: #49606e;
     color: #fff;
+}
+
+.ver-mas-btn {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.ver-mas-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 
@@ -178,7 +195,8 @@ body {
     width: 80%;
     margin: auto;
     text-align: center;
-    padding-top: 50px; 
+    padding-top: 70px; /*fue lo q cambie */
+    padding-bottom: 10px;
 }
 
 .row {
@@ -187,6 +205,10 @@ body {
     align-items: center;
     gap: 60px; 
     margin-bottom: 60px;
+}
+
+.row h3{
+    color:#17212a;
 }
 
 .collage-col {
@@ -218,7 +240,7 @@ body {
     background-color:#49606e ;
     padding-top: 40px;
     color: #c5c2c2;
-    margin-top: 500px;
+    margin-top: 600px; /* tmb este */
 }
 .footer-content {
     display: flex;
@@ -286,3 +308,8 @@ body {
     opacity: .4;
     font-weight: 200;
 }
+
+.collage-col {
+    position: relative;
+}
+

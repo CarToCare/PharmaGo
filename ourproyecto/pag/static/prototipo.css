@@ -168,7 +168,7 @@ body {
 .footer{
     width: auto;
     height: auto;
-    background-color:#49606e ;
+    background-color: #49606e;
     padding-top: 40px;
     color: #c5c2c2;
 }
@@ -237,4 +237,34 @@ body {
     text-transform: uppercase;
     opacity: .4;
     font-weight: 200;
+}
+
+/* Agregue esto */
+.battery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.battery {
+    width: 100px;
+    height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+    background-color: #f4f6f6;
+}
+
+.battery-level {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    /*background-color: #28a745; */
+}
+
+#battery-text {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #283747;
 }
