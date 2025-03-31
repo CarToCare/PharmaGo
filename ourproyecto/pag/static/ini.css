@@ -131,6 +131,25 @@ body {
     color: #fff;
 }
 
+.ver-mas-btn {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.ver-mas-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
 
 /* Contenedor 2 */
 .content {
@@ -186,6 +205,10 @@ body {
     align-items: center;
     gap: 60px; 
     margin-bottom: 60px;
+}
+
+.row h3{
+    color:#17212a;
 }
 
 .collage-col {
@@ -285,3 +308,8 @@ body {
     opacity: .4;
     font-weight: 200;
 }
+
+.collage-col {
+    position: relative;
+}
+
