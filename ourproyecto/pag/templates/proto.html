@@ -49,7 +49,8 @@
             <box-icon name='car-battery' type='solid' size='130px' color='#283747' ></box-icon>
             <h2>Información de la Batería</h2>
             <br>
-            <p>{{proto.voltaje}} </p>
+            <p><input type="number" class="battery-level" name="battery-level-level" id="battery-level-level" value={{proto.voltaje}} style="border: none;"> </p>
+            
 
             <!-- Agregue estooo -->
             <div class="battery-container">
@@ -115,8 +116,9 @@
 
 <!-- Agregue estooo y si fue de chat -->
 <script>
+const input = document.getElementById("battery-level-level");
 // Simulamos el nivel de batería (valor inicial)
-let batteryLevel = 8; // Máximo es 8
+let batteryLevel = input.value; // Máximo es 8 Este valor lo debes de conectar a lo que manda el arduino.
 
 // Seleccionamos los elementos de la barra y el texto
 const batteryElement = document.getElementById("battery-level");
