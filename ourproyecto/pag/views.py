@@ -32,6 +32,58 @@ def pacientes(request):
     pc=getPacientes()
     return render(request, 'pacientes.html', {'pacientes':pc});
 
+def nuevo_idRec():
+    ultima_rec = recetas_coll.find_one(sort=[("idReceta", -1)])
+
+    if ultima_rec:
+        ultimo_id = ultima_rec["idReceta"]
+        numero = int(ultimo_id.split("-")[1])  # Extrae el número de "REC-002"
+        nuevo_numero = numero + 1
+    else:
+        nuevo_numero = 1  # Si no hay recetas, empieza desde 1
+
+    return f"REC-{nuevo_numero:03d}"  # Formato: REC-001, REC-002, etc.
+
+def registroRec(request):
+    nuevo_id_rec = nuevo_idRec()
+    pacientes = pacientes_coll.find()
+    medicamentos = med_coll.find()
+    
+    return render(request, 'registroRec.html', {
+        'nuevo_id_rec': nuevo_id_rec,
+        'pacientes' : pacientes,
+        'medicamentos': medicamentos
+    })
+
+def regRec(request):
+    if request.method == 'POST':
+        idReceta = request.POST.get('idReceta')
+        idPaciente = request.POST.get('idPaciente')
+
+        medicamentos = []
+        index = 0
+        while f"medicamentos[{index}][idMedicamento]" in request.POST:
+            medicamento = {
+                "idMedicamento": request.POST.get(f"medicamentos[{index}][idMedicamento]"),
+                "cantidad": int(request.POST.get(f"medicamentos[{index}][cantidad]")),
+                "horaInicial": request.POST.get(f"medicamentos[{index}][horaInicial]"),
+                "periodicidad": request.POST.get(f"medicamentos[{index}][periodicidad]"),
+                "fechaInicio": request.POST.get(f"medicamentos[{index}][fechaInicio]"),
+                "fechaFin": request.POST.get(f"medicamentos[{index}][fechaFin]"),
+            }
+            medicamentos.append(medicamento)
+            index += 1
+
+        receta = {
+            "idReceta": idReceta,
+            "idPaciente": idPaciente,
+            "medicamentos": medicamentos
+        }
+
+        recetas_coll.insert_one(receta)
+
+        return redirect('recetas')  # Redirigir a la página de recetas después de registrar
+
 def test(request):
     p=getPacientes("PAC-001")
     print(p)

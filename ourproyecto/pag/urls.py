@@ -14,4 +14,6 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('recetas/', views.recetas, name='recetas'),
     path('regPac/', views.regPac, name='regPac'),
+    path('registroRec/', views.registroRec, name='registroRec'),
+    path('regRec/', views.regRec, name='regRec'),
 ]
