@@ -69,6 +69,7 @@
             <h2>Latitud y Longitud</h2>
             <br>
             <p>Latitud: {{proto.latitud}} Longitud: {{proto.longitud}}</p>
+            <div id="map" style="height: 400px; width: 100%;"></div>
         </div>
     </div>
     
@@ -94,7 +95,29 @@
     setTimeout(function(){
         window.location.reload();
     }, 10000);
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var lat = parseFloat("{{ proto.latitud }}");
+        var lon = parseFloat("{{ proto.longitud }}");
+
+        // Inicializa el mapa
+        var map = L.map('map').setView([lat, lon], 15);
+
+        // Agrega capa de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Agrega un marcador en la ubicación del prototipo
+        L.marker([lat, lon]).addTo(map)
+            .bindPopup("Ubicación del Prototipo")
+            .openPopup();
+    });
 </script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 </div>
 
 <footer class="footer">

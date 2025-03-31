@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <title>PharmaGo</title>
+    <link rel="stylesheet" href="{% static 'medi.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2><box-icon type='solid' name='package' size='40px' color="#d6dbdf" class="icono-usuario"></box-icon>Entradas/Salidas</h2>
+    <ul>
+        <li> <a href="{% url 'medicamentos' %}"><box-icon name='log-in-circle' type='solid' animation='tada' color="#d6dbdf"></box-icon>
+            <span> Regresar </span></a></li>
+    </ul>
+</div>
+
+<div class="form-container">
+    <h3>Agregar Entrada/Salida</h3>
+    
+        <form method="POST" action="{% url 'agregar_movimiento' %}">
+            {% csrf_token %}
+            <label for="idMedicamento">ID Medicamento:</label>
+            <input type="text" name="idMedicamento" required>
+    
+            <label for="tipo">Tipo:</label>
+            <select name="tipo" required>
+                <option value="entrada">Entrada</option>
+                <option value="salida">Salida</option>
+            </select>
+    
+            <label for="fecha">Fecha:</label>
+            <input type="date" name="fecha" required>
+    
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" name="cantidad" required>
+    
+            <label for="motivo">Motivo:</label>
+            <input type="text" name="motivo" required>
+    
+            <button type="submit" class="btn">Agregar Movimiento</button>
+        </form>
+    </div>    
+
+</body>
+</html>

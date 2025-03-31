@@ -30,6 +30,36 @@ def medicamentos(request):
     med = med_coll.find()
     return render(request, 'medicamentos.html', {'medicamentos': med})
 
+def agregar_movimiento(request):
+    if request.method == "POST":
+        idMedicamento = request.POST["idMedicamento"]
+        tipo = request.POST["tipo"]
+        fecha = request.POST["fecha"]
+        cantidad = int(request.POST["cantidad"])
+        motivo = request.POST["motivo"]
+
+        medicamento = med_coll.find_one({"idMedicamento": idMedicamento})
+        if not medicamento:
+            return HttpResponse("Medicamento no encontrado", status=404)
+
+        movimiento = {
+            "fecha": datetime.strptime(fecha, "%Y-%m-%d"),
+            "cantidad": cantidad,
+            "motivo": motivo
+        }
+
+        if tipo == "entrada":
+            med_coll.update_one({"idMedicamento": idMedicamento}, {"$push": {"entradas": movimiento}})
+        else:
+            med_coll.update_one({"idMedicamento": idMedicamento}, {"$push": {"salidas": movimiento}})
+
+        return redirect("medicamentos")
+
+    return HttpResponse("Método no permitido", status=405)
+
+def formulario_movimiento(request):
+    return render(request, "agregarMov.html")
+
 def pacientes(request):
     pc=getPacientes()
     return render(request, 'pacientes.html', {'pacientes':pc});
