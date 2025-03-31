@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% load static %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="im.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'medicamentos.css' %}">
+
+    <title>Registrar Receta</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <h2><box-icon type='solid' name='capsule' size='40px' color="#d6dbdf" class="icono-usuario"></box-icon>
+                Registrar Receta</h2>
+            <ul>
+                <li><a href="{% url 'recetas' %}"><box-icon name='arrow-back' color="#d6dbdf"></box-icon> Regresar</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-container">
+            <form method="post" action="{% url 'regRec' %}">
+                {% csrf_token %}
+
+                
+                <input type="hidden" name="idReceta" value="{{ nuevo_id_rec }}">
+
+                <label for="idPaciente">Seleccionar Paciente:</label>
+                <select id="idPaciente" name="idPaciente">
+                    <option value="">Seleccione un paciente</option>
+                    {% for paciente in pacientes %}
+                    <option value="{{ paciente.idPaciente }}">{{ paciente.nombrePaciente }}</option>
+                    {% endfor %}
+                </select>
+
+                <h3>Medicamentos</h3>
+                <div id="medicamentos-container">
+                    <div class="medicamento">
+                        <label for="medicamento-select">Seleccionar Medicamento:</label>
+                        <select id="medicamento-select" name="medicamentos[0][idMedicamento]">
+                            <option value="">Seleccione un medicamento</option>
+                            {% for medicamento in medicamentos %}
+                            <option value="{{ medicamento.idMedicamento }}">{{ medicamento.nombreMedicamento }}</option>
+                            {% endfor %}
+                        </select>
+                    
+                        <label for="cantidad-0">Cantidad (en pastillas):</label>
+                        <input type="number" id="cantidad-0" name="medicamentos[0][cantidad]" required>
+                    
+                        <label for="horaInicial-0">Hora Inicial:</label>
+                        <input type="time" id="horaInicial-0" name="medicamentos[0][horaInicial]" required>
+                    
+                        <label for="periodicidad-0">Periodicidad: Cada</label>
+                        <input type="number" id="periodicidad-0" name="medicamentos[0][periodicidad]" required min="1"> horas
+                    
+                        <label for="fechaInicio-0">Fecha Inicio:</label>
+                        <input type="date" id="fechaInicio-0" name="medicamentos[0][fechaInicio]" required>
+                    
+                        <label for="fechaFin-0">Fecha Fin:</label>
+                        <input type="date" id="fechaFin-0" name="medicamentos[0][fechaFin]" required>
+                    </div>
+                </div>
+
+                <button type="button" id="add-medicamento">Añadir Medicamento</button>
+                <button type="submit" class="btn">Registrar Receta</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const medicamentos = JSON.parse('{{ medicamentos_json|escapejs }}');
+        
+        document.getElementById("add-medicamento").addEventListener("click", function () {
+            let container = document.getElementById("medicamentos-container");
+            let index = container.children.length;
+    
+            let medicamentoDiv = document.createElement("div");
+            medicamentoDiv.classList.add("medicamento");
+    
+            let optionsHTML = '<option value="">Seleccione un medicamento</option>';
+            medicamentos.forEach(m => {
+                optionsHTML += `<option value="${m.idMedicamento}">${m.nombreMedicamento}</option>`;
+            });
+    
+            medicamentoDiv.innerHTML = `
+                <label for="medicamento-select-${index}">Seleccionar Medicamento:</label>
+                <select id="medicamento-select-${index}" name="medicamentos[${index}][idMedicamento]">
+                    ${optionsHTML}
+                </select>
+        
+                <label for="cantidad-${index}">Cantidad:</label>
+                <input type="number" id="cantidad-${index}" name="medicamentos[${index}][cantidad]" required>
+        
+                <label for="horaInicial-${index}">Hora Inicial:</label>
+                <input type="time" id="horaInicial-${index}" name="medicamentos[${index}][horaInicial]" required>
+        
+                <label for="periodicidad-${index}">Periodicidad:</label>
+                <input type="number" id="periodicidad-${index}" name="medicamentos[${index}][periodicidad]" required min="1">
+        
+                <label for="fechaInicio-${index}">Fecha Inicio:</label>
+                <input type="date" id="fechaInicio-${index}" name="medicamentos[${index}][fechaInicio]" required>
+        
+                <label for="fechaFin-${index}">Fecha Fin:</label>
+                <input type="date" id="fechaFin-${index}" name="medicamentos[${index}][fechaFin]" required>
+            `;
+    
+            container.appendChild(medicamentoDiv);
+        });
+    </script>
+
+</body>
+
+</html>
