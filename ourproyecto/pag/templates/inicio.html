@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     {% load static %}
-    <link rel="stylesheet" href="{% static 'inicio.css' %}">  
+    <link rel="stylesheet" href="{% static 'ini.css' %}">  
 
     <title>PharmaGo</title>
 </head>
@@ -35,37 +35,43 @@
             <li><a href="">Recetas</a></li>
             <li><a href="">Entregas</a></li>
             <li><a href="">Prototipo</a></li>
-            <a href="{% url 'principal' %}" class="btn">Cerrar sesión </a>
         </ul>
     </div>
 
     <div class="content" id="inicio">
-        <p>Bienvenido al centro de control: Tu acceso exclusivo para gestionar y optimizar la operación del hospital con eficiencia y seguridad.</p>
+        <p>Bienvenido al centro de control: Tu acceso exclusivo para gestionar y optimizar la operación del hospital con eficiencia y seguridad.
+            <br><br>
+            <a href="{% url 'principal' %}" class="btn">Cerrar sesión</a>
+        </p>
     </div>
 
 
     <section class="collage">
         <h2></h2> 
-
+    
         <br>
     
         <div class="row">
             <div class="collage-col">
                 <a href="{% url 'medicamentos' %}">
-                <img src="/static/recursos/fondito.jpeg" alt="Medicamentos">
+                    <img src="/static/recursos/fondito.jpeg" alt="Medicamentos">
+                    <button class="ver-mas-btn" data-url="{% url 'medicamentos' %}">Ver más</button>
                 </a>
                 <h3>Medicamentos</h3>  
             </div>
     
             <div class="collage-col">
                 <a href="{% url 'pacientes' %}">
-                <img src="/static/recursos/fondito.jpeg" alt="Pacientes">
+                    <img src="/static/recursos/fondito.jpeg" alt="Pacientes">
+                    <button class="ver-mas-btn" data-url="{% url 'pacientes' %}">Ver más</button>
                 </a>
                 <h3>Pacientes</h3>  
             </div>
+    
             <div class="collage-col">
                 <a href="{% url 'recetas' %}">
-                <img src="/static/recursos/fondito.jpeg" alt="Recetas">
+                    <img src="/static/recursos/fondito.jpeg" alt="Recetas">
+                    <button class="ver-mas-btn" data-url="{% url 'recetas' %}">Ver más</button>
                 </a>
                 <h3>Recetas</h3>  
             </div>
@@ -74,14 +80,16 @@
         <div class="row">
             <div class="collage-col">
                 <a href="{% url 'entregas' %}">
-                <img src="/static/recursos/fondito.jpeg" alt="Entregas">
+                    <img src="/static/recursos/fondito.jpeg" alt="Entregas">
+                    <button class="ver-mas-btn" data-url="{% url 'entregas' %}">Ver más</button>
                 </a>
                 <h3>Entregas</h3>  
             </div>
     
             <div class="collage-col">
                 <a href="{% url 'proto' %}">
-                <img src="/static/recursos/fondito.jpeg" alt="Prototipo">
+                    <img src="/static/recursos/fondito.jpeg" alt="Prototipo">
+                    <button class="ver-mas-btn" data-url="{% url 'proto' %}">Ver más</button>
                 </a>
                 <h3>Prototipo</h3>  
             </div>
@@ -106,5 +114,6 @@
         <p>&copy; 2025 PharmaGo. Todos los derechos reservados. Diseñado por <strong>Vet To Care</strong></p>
     </div>
 </footer>
+
 </body>
 </html>

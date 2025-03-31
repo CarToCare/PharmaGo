@@ -6,22 +6,21 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background: linear-gradient(90deg, #e6eaed, #f8f9fa);
     height: 100vh;
+    overflow-y: auto;
 }
 
-/* Contenedor */
 .container-fluid {
     padding: 0px;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .container {
+    all: unset;
     height: 80px;
     background: linear-gradient(90deg, #5d6d7e, #344D5D);
     display: flex;
@@ -35,8 +34,7 @@ body {
     font-weight: bold;
     font-size: 30px;
     cursor: pointer;
-    margin-top: -10px;
-    margin-right: -10px;
+    margin-top: -10px; 
 }
 
 .container ul {
@@ -48,13 +46,13 @@ body {
     margin-right: 50px;
 }
 
-.container ul li a {
+.container ul li a  {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
 
-.container span {
+.container span{
     position: relative;
     top: -5px;
 }
@@ -63,26 +61,32 @@ body {
     color: #b4c3f6;
 }
 
-/* Cards */
-.card {
+/* Contenedor de medicamentos */
+.medicamentos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+}
+
+.medicamento {
     background-color: #ffffff;
     border-radius: 16px;
     padding: 24px;
-    padding-left: 40px;
-    margin: 20px 0;
-    margin-left: 80px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    max-width: 350px;
-    font-family: 'Montserrat', sans-serif;
+    width: 340px;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.medicamento:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
-.card .title {
+.medicamento h3 {
     background: rgba(93, 109, 126, 0.8);
     color: #ffffff;
     font-size: 22px;
@@ -92,25 +96,33 @@ body {
     text-align: center;
 }
 
-.card .field {
-    margin-bottom: 12px;
-    color: #555;
-}
-
-.card .field strong {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.card .field ul {
-    padding-left: 40px;
-}
-
-.card .field li {
-    margin-bottom: 12px;
+.medicamento p {
     font-size: 14px;
     color: #7f8c8d;
+    margin-bottom: 8px;
+}
+
+.medicamento strong {
+    color: #34495e;
+}
+
+.medicamento ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.medicamento ul li {
+    background-color: #ecf0f1;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+    font-size: 13px;
+}
+
+.medicamento h4 {
+    margin-top: 16px;
+    color: #34495e;
+    font-size: 18px;
 }
 
 /* Icono */
@@ -123,9 +135,10 @@ body {
 .footer{
     width: auto;
     height: auto;
-    background-color:#49606e ;
+    background-color: #49606e; /*49606e*/
     padding-top: 40px;
     color: #c5c2c2;
+    margin-top: 0;
 }
 .footer-content {
     display: flex;

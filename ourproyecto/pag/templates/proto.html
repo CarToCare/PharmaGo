@@ -19,7 +19,7 @@
  
     
     {% load static %}
-    <link rel="stylesheet" href="{% static 'proto.css' %}">  
+    <link rel="stylesheet" href="{% static 'prototipo.css' %}">  
 
     <title>PharmaGo</title>
 </head>
@@ -49,7 +49,18 @@
             <box-icon name='car-battery' type='solid' size='130px' color='#283747' ></box-icon>
             <h2>Información de la Batería</h2>
             <br>
-            <p>{{proto.voltaje}} </p>
+            <p><input type="number" class="battery-level" name="battery-level-level" id="battery-level-level" value={{proto.voltaje}} style="border: none;"> </p>
+            
+
+            <!-- Agregue estooo -->
+            <div class="battery-container">
+                <div class="battery">
+                    <div class="battery-level" id="battery-level"></div>
+                </div>
+                <p id="battery-text">Cargando...</p>
+            </div>
+            <!-- Aaqui -->
+            
         </div>
         <div class="divider"></div>
         <div class="right-container">
@@ -101,6 +112,57 @@
         <p>&copy; 2025 PharmaGo. Todos los derechos reservados. Diseñado por <strong>Vet To Care</strong></p>
     </div>
 </footer>
+
+
+<!-- Agregue estooo y si fue de chat -->
+<script>
+const input = document.getElementById("battery-level-level");
+// Simulamos el nivel de batería (valor inicial)
+let batteryLevel = input.value; // Máximo es 8 Este valor lo debes de conectar a lo que manda el arduino.
+
+// Seleccionamos los elementos de la barra y el texto
+const batteryElement = document.getElementById("battery-level");
+const batteryText = document.getElementById("battery-text");
+
+// Verificamos si los elementos existen
+if (!batteryElement || !batteryText) {
+    console.error("Elementos de batería no encontrados.");
+}
+
+// Función para actualizar la barra de batería y el texto
+function updateBatteryLevel(level) {
+    level = parseFloat(level); // Asegurarse de que sea número
+
+    // Calcular el porcentaje
+    const percentage = Math.max(0, Math.min((level / 8) * 100, 100));
+    batteryElement.style.width = percentage + "%";
+
+    // Lógica de colores
+    if (level >= 7) {
+        batteryElement.style.backgroundColor = "#117864"; // Verde
+        batteryText.textContent = "Carga completa";
+    } else if (level >= 5) {
+        batteryElement.style.backgroundColor = "#f1c40f"; // Amarillo
+        batteryText.textContent = "Carga media";
+    } else {
+        batteryElement.style.backgroundColor = "#7b241c"; // Rojo
+        batteryText.textContent = "Baja carga";
+    }
+}
+
+// Mostrar el nivel inicial
+updateBatteryLevel(batteryLevel);
+
+// Simular la descarga de la batería cada 5 segundos
+setInterval(() => {
+    if (batteryLevel > 0) {
+        batteryLevel = Math.max(0, batteryLevel - 0.5); // No baja de 0
+    }
+    updateBatteryLevel(batteryLevel);
+}, 5000);
+</script>
+
+
 
 </body>
 </html>
