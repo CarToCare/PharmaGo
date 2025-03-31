@@ -45,9 +45,9 @@
                     <strong>ID Medicamento:</strong> {{ med.idMedicamento }}<br>
                     <strong>Cantidad:</strong> {{ med.cantidad }}<br>
                     <strong>Hora Inicial:</strong> {{ med.horaInicial }}<br>
-                    <strong>Periodicidad:</strong> {{ med.periodicidad }}<br>
-                    <strong>Fecha Inicio:</strong> {{ med.fechaInicio|date:"d/m/Y" }}<br>
-                    <strong>Fecha Fin:</strong> {{ med.fechaFin|date:"d/m/Y" }}
+                    <strong>Periodicidad:</strong>Cada {{ med.periodicidad }} horas<br> 
+                    <strong>Fecha Inicio:</strong> {{ med.fechaInicio|date:"Y-m-d" }}<br>
+                    <strong>Fecha Fin:</strong> {{ med.fechaFin|date:"Y-m-d" }}
                 </li>
                 {% endfor %}
             </ul>

@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login
 from .models import usuarios_coll, proto_coll, entregas_coll, CustomUser, recetas_coll, med_coll, pacientes_coll
 from .db import getOnePaciente, getPacientes
 import re
+import json
+from datetime import datetime
 
 # Create your views here.
 def principal(request):
@@ -47,12 +49,16 @@ def nuevo_idRec():
 def registroRec(request):
     nuevo_id_rec = nuevo_idRec()
     pacientes = pacientes_coll.find()
-    medicamentos = med_coll.find()
+    medicamentos = list(med_coll.find())  # Convertir a lista
     
     return render(request, 'registroRec.html', {
         'nuevo_id_rec': nuevo_id_rec,
-        'pacientes' : pacientes,
-        'medicamentos': medicamentos
+        'pacientes': pacientes,
+        'medicamentos': medicamentos,
+        'medicamentos_json': json.dumps([{
+            'idMedicamento': m['idMedicamento'],
+            'nombreMedicamento': m['nombreMedicamento']
+        } for m in medicamentos])  # Convertir a JSON
     })
 
 def regRec(request):
@@ -61,18 +67,32 @@ def regRec(request):
         idPaciente = request.POST.get('idPaciente')
 
         medicamentos = []
-        index = 0
-        while f"medicamentos[{index}][idMedicamento]" in request.POST:
-            medicamento = {
-                "idMedicamento": request.POST.get(f"medicamentos[{index}][idMedicamento]"),
-                "cantidad": int(request.POST.get(f"medicamentos[{index}][cantidad]")),
-                "horaInicial": request.POST.get(f"medicamentos[{index}][horaInicial]"),
-                "periodicidad": request.POST.get(f"medicamentos[{index}][periodicidad]"),
-                "fechaInicio": request.POST.get(f"medicamentos[{index}][fechaInicio]"),
-                "fechaFin": request.POST.get(f"medicamentos[{index}][fechaFin]"),
-            }
-            medicamentos.append(medicamento)
-            index += 1
+        post_data = request.POST
+        medicamento_indices = set()
+        for key in post_data:
+            if key.startswith('medicamentos[') and '][idMedicamento]' in key:
+                # Extraer el índice del medicamento
+                index = key.split('[')[1].split(']')[0]
+                medicamento_indices.add(index)
+        
+        # Procesar cada medicamento
+        for index in medicamento_indices:
+            id_medicamento = post_data.get(f'medicamentos[{index}][idMedicamento]')
+            if id_medicamento:  # Solo si se seleccionó un medicamento
+                fecha_inicio_str = post_data.get(f'medicamentos[{index}][fechaInicio]')
+                fecha_fin_str = post_data.get(f'medicamentos[{index}][fechaFin]')
+
+                fecha_inicio = datetime.strptime(fecha_inicio_str, '%Y-%m-%d') if fecha_inicio_str else None
+                fecha_fin = datetime.strptime(fecha_fin_str, '%Y-%m-%d') if fecha_fin_str else None
+                medicamento = {
+                    "idMedicamento": id_medicamento,
+                    "cantidad": int(post_data.get(f'medicamentos[{index}][cantidad]', 0)),
+                    "horaInicial": post_data.get(f'medicamentos[{index}][horaInicial]'),
+                    "periodicidad": int(post_data.get(f'medicamentos[{index}][periodicidad]', 1)),
+                    "fechaInicio": fecha_inicio,
+                    "fechaFin": fecha_fin,
+                }
+                medicamentos.append(medicamento)
 
         receta = {
             "idReceta": idReceta,
@@ -81,8 +101,7 @@ def regRec(request):
         }
 
         recetas_coll.insert_one(receta)
-
-        return redirect('recetas')  # Redirigir a la página de recetas después de registrar
+        return redirect('recetas')
 
 def test(request):
     p=getPacientes("PAC-001")

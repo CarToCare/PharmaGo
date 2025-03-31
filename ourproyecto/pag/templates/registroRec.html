@@ -43,7 +43,7 @@
                 <input type="hidden" name="idReceta" value="{{ nuevo_id_rec }}">
 
                 <label for="idPaciente">Seleccionar Paciente:</label>
-                <select id="medicamento-select-0" name="medicamentos[0][idMedicamento]">
+                <select id="idPaciente" name="idPaciente">
                     <option value="">Seleccione un paciente</option>
                     {% for paciente in pacientes %}
                     <option value="{{ paciente.idPaciente }}">{{ paciente.nombrePaciente }}</option>
@@ -55,26 +55,26 @@
                     <!-- Contenedor de los medicamentos -->
                     <div class="medicamento">
                         <label for="medicamento-select">Seleccionar Medicamento:</label>
-                        <select id="medicamento-select" name="medicamento-id">
+                        <select id="medicamento-select" name="medicamentos[0][idMedicamento]">
                             <option value="">Seleccione un medicamento</option>
                             {% for medicamento in medicamentos %}
                             <option value="{{ medicamento.idMedicamento }}">{{ medicamento.nombreMedicamento }}</option>
                             {% endfor %}
                         </select>
-
-                        <label for="cantidad">Cantidad:</label>
+                    
+                        <label for="cantidad-0">Cantidad (en pastillas):</label>
                         <input type="number" id="cantidad-0" name="medicamentos[0][cantidad]" required>
-
-                        <label for="horaInicial">Hora Inicial:</label>
+                    
+                        <label for="horaInicial-0">Hora Inicial:</label>
                         <input type="time" id="horaInicial-0" name="medicamentos[0][horaInicial]" required>
-
-                        <label for="periodicidad">Periodicidad:</label>
-                        <input type="text" id="periodicidad-0" name="medicamentos[0][periodicidad]" required>
-
-                        <label for="fechaInicio">Fecha Inicio:</label>
+                    
+                        <label for="periodicidad-0">Periodicidad: Cada</label>
+                        <input type="number" id="periodicidad-0" name="medicamentos[0][periodicidad]" required min="1"> horas
+                    
+                        <label for="fechaInicio-0">Fecha Inicio:</label>
                         <input type="date" id="fechaInicio-0" name="medicamentos[0][fechaInicio]" required>
-
-                        <label for="fechaFin">Fecha Fin:</label>
+                    
+                        <label for="fechaFin-0">Fecha Fin:</label>
                         <input type="date" id="fechaFin-0" name="medicamentos[0][fechaFin]" required>
                     </div>
                 </div>
@@ -86,20 +86,24 @@
     </div>
 
     <script>
+        const medicamentos = JSON.parse('{{ medicamentos_json|escapejs }}');
+        
         document.getElementById("add-medicamento").addEventListener("click", function () {
             let container = document.getElementById("medicamentos-container");
             let index = container.children.length;
-
+    
             let medicamentoDiv = document.createElement("div");
             medicamentoDiv.classList.add("medicamento");
-
+    
+            let optionsHTML = '<option value="">Seleccione un medicamento</option>';
+            medicamentos.forEach(m => {
+                optionsHTML += `<option value="${m.idMedicamento}">${m.nombreMedicamento}</option>`;
+            });
+    
             medicamentoDiv.innerHTML = `
                 <label for="medicamento-select-${index}">Seleccionar Medicamento:</label>
                 <select id="medicamento-select-${index}" name="medicamentos[${index}][idMedicamento]">
-                    <option value="">Seleccione un medicamento</option>
-                    {% for medicamento in medicamentos %}
-                        <option value="{{ medicamento.idMedicamento }}">{{ medicamento.nombreMedicamento }}</option>
-                    {% endfor %}
+                    ${optionsHTML}
                 </select>
         
                 <label for="cantidad-${index}">Cantidad:</label>
@@ -109,7 +113,7 @@
                 <input type="time" id="horaInicial-${index}" name="medicamentos[${index}][horaInicial]" required>
         
                 <label for="periodicidad-${index}">Periodicidad:</label>
-                <input type="text" id="periodicidad-${index}" name="medicamentos[${index}][periodicidad]" required>
+                <input type="number" id="periodicidad-${index}" name="medicamentos[${index}][periodicidad]" required min="1">
         
                 <label for="fechaInicio-${index}">Fecha Inicio:</label>
                 <input type="date" id="fechaInicio-${index}" name="medicamentos[${index}][fechaInicio]" required>
@@ -117,7 +121,7 @@
                 <label for="fechaFin-${index}">Fecha Fin:</label>
                 <input type="date" id="fechaFin-${index}" name="medicamentos[${index}][fechaFin]" required>
             `;
-
+    
             container.appendChild(medicamentoDiv);
         });
     </script>
