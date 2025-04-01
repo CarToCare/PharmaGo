@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
 
-    <link rel="icon" type="image/png" href="im.png">
+    <link rel="icon" type="image/jpg" href="/static/recursos/icon.jpg"> <!-- ICONO -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
@@ -49,7 +50,10 @@
             <box-icon name='car-battery' type='solid' size='130px' color='#283747' ></box-icon>
             <h2>Información de la Batería</h2>
             <br>
-            <p><input type="number" class="battery-level" name="battery-level-level" id="battery-level-level" value={{proto.voltaje}} style="border: none;"> </p>
+            <p>
+                <input type="number" class="battery-level" name="battery-level-level" id="battery-level-level" value="{{proto.voltaje}}" style="border: none; background: transparent; text-align: center; width: 100%; padding: 5px; font-size: 15px;">
+            </p>
+            
             
 
             <!-- Agregue estooo -->
@@ -68,6 +72,7 @@
             <h2>Latitud y Longitud</h2>
             <br>
             <p>Latitud: {{proto.latitud}} Longitud: {{proto.longitud}}</p>
+            <div id="map" style="height: 400px; width: 100%;"></div>
         </div>
     </div>
     
@@ -93,7 +98,29 @@
     setTimeout(function(){
         window.location.reload();
     }, 10000);
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var lat = parseFloat("{{ proto.latitud }}");
+        var lon = parseFloat("{{ proto.longitud }}");
+
+        // Inicializa el mapa
+        var map = L.map('map').setView([lat, lon], 15);
+
+        // Agrega capa de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Agrega un marcador en la ubicación del prototipo
+        L.marker([lat, lon]).addTo(map)
+            .bindPopup("Ubicación del Prototipo")
+            .openPopup();
+    });
 </script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 </div>
 
 <footer class="footer">

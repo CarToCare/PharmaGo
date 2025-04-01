@@ -1,11 +1,13 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .models import usuarios_coll, proto_coll, entregas_coll, CustomUser, recetas_coll, med_coll, pacientes_coll
 from .db import getOnePaciente, getPacientes
 import re
 import json
 from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
 
 # Create your views here.
 def principal(request):
@@ -30,9 +32,48 @@ def medicamentos(request):
     med = med_coll.find()
     return render(request, 'medicamentos.html', {'medicamentos': med})
 
+def agregar_movimiento(request):
+    if request.method == "POST":
+        idMedicamento = request.POST["idMedicamento"]
+        tipo = request.POST["tipo"]
+        fecha = request.POST["fecha"]
+        cantidad = int(request.POST["cantidad"])
+        motivo = request.POST["motivo"]
+
+        medicamento = med_coll.find_one({"idMedicamento": idMedicamento})
+        if not medicamento:
+            return HttpResponse("Medicamento no encontrado", status=404)
+
+        movimiento = {
+            "fecha": datetime.strptime(fecha, "%Y-%m-%d"),
+            "cantidad": cantidad,
+            "motivo": motivo
+        }
+
+        if tipo == "entrada":
+            med_coll.update_one({"idMedicamento": idMedicamento}, {"$push": {"entradas": movimiento}})
+        else:
+            med_coll.update_one({"idMedicamento": idMedicamento}, {"$push": {"salidas": movimiento}})
+
+        return redirect("medicamentos")
+
+    return HttpResponse("Método no permitido", status=405)
+
+def formulario_movimiento(request):
+    return render(request, "agregarMov.html")
+
 def pacientes(request):
     pc=getPacientes()
     return render(request, 'pacientes.html', {'pacientes':pc});
+
+def getPacientes():
+    return list(pacientes_coll.find({}))
+
+@csrf_exempt
+def eliminar_paciente(request, idPaciente):
+    if request.method == "POST":
+        pacientes_coll.delete_one({"idPaciente": idPaciente})
+        return redirect('pacientes')
 
 def nuevo_idRec():
     ultima_rec = recetas_coll.find_one(sort=[("idReceta", -1)])
@@ -107,38 +148,41 @@ def test(request):
     return HttpResponse(p)
 
 def sIn(request):
-    print("hay va")
     if request.method =='POST':
         email=request.POST.get('correo')    
         pas=request.POST.get('pass')
-    u=usuarios_coll.find_one( {"correoElectronico":email})
-    if u is not None:
-        if u['password']==pas and u['pL']==True:
-            try:
-                user = CustomUser.objects.get(correo=u['correoElectronico'])
-            except CustomUser.DoesNotExist:
-                user = CustomUser.objects.create_user(
-                    username=u['nombre'],
-                    password=u['password'],
-                    correo=u['correoElectronico'],
-                    telefono=u['datosComplementarios']['telefono']
-                )
-            user=authenticate(correo=u['correoElectronico'], password=u['password'])
-            print(user.password)
-            if user is not None:
-                login(request,user)
-                response=redirect('inicio')
-                response.set_cookie('correo', email)
-                print("Usuario autenticado")
+        u=usuarios_coll.find_one( {"correoElectronico":email})
+        if u is not None:
+            if u['password']==pas and u['pL']==True:
+                try:
+                    user = CustomUser.objects.get(correo=u['correoElectronico'])
+                except CustomUser.DoesNotExist:
+                    user = CustomUser.objects.create_user(
+                        username=u['nombre'],
+                        password=u['password'],
+                        correo=u['correoElectronico'],
+                        telefono=u['datosComplementarios']['telefono']
+                    )
+                user=authenticate(correo=u['correoElectronico'], password=u['password'])
+                if user is not None:
+                    login(request,user)
+                    response=redirect('inicio')
+                    response.set_cookie('correo', email)
+                    return response
+                else:
+                    messages.error(request, "Usuario o contraseña incorrectos")
+
             else:
-                print("Usuario o contraseña incorrectos")
+                messages.error(request, "Usuario o contraseña incorrectos")
         else:
-            print("no existe")
-            response=redirect('principal')
-    else:
-        print("no existe")
-        response=redirect('principal')
-    return response
+            messages.error(request, "Usuario o contraseña incorrectos")
+        return redirect('sIn')
+
+    return render(request, 'sesion.html')
+
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('principal')
 
 def registro(request):
     return render(request, 'registro.html')

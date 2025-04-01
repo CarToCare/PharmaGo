@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="im.png">
+    <link rel="icon" type="image/jpg" href="/static/recursos/icon.jpg"> <!-- ICONO -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
@@ -22,7 +23,7 @@
 </head>
 <body>
 
-<div class="container-fluid">
+
     <div class="container">
         <h2><box-icon name='detail' size='40px'  color="#d6dbdf" class="icono-usuario"></box-icon> Recetas Médicas</h2>
         <ul>
@@ -31,6 +32,7 @@
         </ul>
     </div>
 
+    <div class="container-recetas">
     {% for receta in recetas %}
     <div class="card">
         <div class="title">{{ receta.idReceta }}</div>
@@ -59,11 +61,6 @@
         <a href="{% url 'registroRec' %}" class="btn">Registrar receta</a>
       </div>
 </div>
-
-<div class="content">
-    <a href="{% url 'registro' %}" class="btn">Registrar receta</a>
-</div>
-
 
 <footer class="footer">
     <div class="footer-content">
