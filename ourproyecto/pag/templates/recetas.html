@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<div class="container-fluid">
+
     <div class="container">
         <h2><box-icon name='detail' size='40px'  color="#d6dbdf" class="icono-usuario"></box-icon> Recetas Médicas</h2>
         <ul>
@@ -32,6 +32,7 @@
         </ul>
     </div>
 
+    <div class="container-recetas">
     {% for receta in recetas %}
     <div class="card">
         <div class="title">{{ receta.idReceta }}</div>
