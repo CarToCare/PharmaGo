@@ -72,8 +72,8 @@ body {
     justify-content: flex-start;
     padding: 20px;
     overflow-x: auto;
-    margin-left: 75px;
-    margin-right: 50px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .card {
