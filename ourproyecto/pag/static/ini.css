@@ -238,7 +238,7 @@ body {
     width: auto;
     height: auto;
     background-color:#49606e ;
-    padding-top: 40px;
+    padding-top: 90px;
     color: #c5c2c2;
     margin-top: 600px; /* tmb este */
 }
@@ -312,4 +312,3 @@ body {
 .collage-col {
     position: relative;
 }
-
