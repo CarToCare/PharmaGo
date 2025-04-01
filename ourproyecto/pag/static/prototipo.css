@@ -22,7 +22,7 @@ body {
     justify-content: flex-start; 
     align-items: center;
     margin-top: -360px;
-    margin-bottom: 20%; 
+    margin-bottom: 20%; /*este lo cambie */
 }
 
 .container {

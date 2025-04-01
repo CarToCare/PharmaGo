@@ -40,7 +40,7 @@ body {
 }
 
 /* Contenedor 1 */
-.container-fluid {
+.container-fluid2 {
     width: 100%;
     height: 100vh;
     position: relative;
@@ -240,6 +240,7 @@ body {
     background-color:#49606e ;
     padding-top: 90px;
     color: #c5c2c2;
+    margin-top: 600px; /* Este lo cambie */
 }
 .footer-content {
     display: flex;
