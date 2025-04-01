@@ -62,10 +62,12 @@
                   <input type="text" name="nombrePaciente" placeholder="Nombre completo" require>
                 </label>
 
+                  <!-- <input type="date" name="fechaNacimientoPaciente" required> -->
                 <label>
                   <i class='bx bx-user'><box-icon type='solid' name='calendar' color='#154360'></box-icon></i>
-                  <input type="date" name="fechaNacimientoPaciente" required>
+                  <input type="text" id="fecha-nacimiento" name="fechaNacimientoPaciente" placeholder="Fecha de nacimiento" required>
                 </label>
+                
 
                 <label>
                   <i class='bx bx-user'><box-icon name='male' color='#154360'></box-icon></i>
@@ -110,6 +112,15 @@
     </div>
 
   </div>
-</body>
 
+  <!-- Es para el input de fecha nac -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  flatpickr("#fecha-nacimiento", {
+    dateFormat: "d/m/Y",
+  });
+</script>
+
+</body>
 </html>

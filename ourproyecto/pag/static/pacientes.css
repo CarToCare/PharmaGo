@@ -248,7 +248,8 @@ body {
 }
 
 .btn-eliminar {
-    background-color: #e74c3c;
+    background-color: #a93226;
+    margin-top: 3%;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -259,6 +260,6 @@ body {
 }
 
 .btn-eliminar:hover {
-    background-color: #c0392b;
+    background-color: #922b21;
     transform: scale(1.05);
 }

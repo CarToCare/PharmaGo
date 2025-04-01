@@ -27,15 +27,15 @@
     <div class="capa"></div>
 
 
-<div class="container-fluid">
+<div class="container-fluid2">
     <div class="container">
         <h2>PharmaGo</h2>
         <ul>
-            <li><a href="">Medicamentos</a></li>
-            <li><a href="">Pacientes</a></li>
-            <li><a href="">Recetas</a></li>
-            <li><a href="">Entregas</a></li>
-            <li><a href="">Prototipo</a></li>
+            <li><a href="{% url 'medicamentos' %}">Medicamentos</a></li>
+            <li><a href="{% url 'pacientes' %}">Pacientes</a></li>
+            <li><a href="{% url 'recetas' %}">Recetas</a></li>
+            <li><a href="{% url 'entregas' %}">Entregas</a></li>
+            <li><a href="{% url 'proto' %}">Prototipo</a></li>
         </ul>
     </div>
 
@@ -55,66 +55,100 @@
         <div class="row">
             <div class="collage-col">
                 <a href="{% url 'medicamentos' %}">
-                    <img src="/static/recursos/fondito.jpeg" alt="Medicamentos">
-                    <button class="ver-mas-btn" data-url="{% url 'medicamentos' %}">Ver más</button>
+                    <div class="image-container">
+                        <img src="/static/recursos/medicamentos.jpeg" alt="Medicamentos">
+                        <div class="image-text">
+                            <p>Los medicamentos son esenciales para el tratamiento de diversas enfermedades.</p>
+                        </div>
+                    </div>
                 </a>
+                <br></br>
                 <h3>Medicamentos</h3>  
+                <button class="ver-mas-btn" data-url="{% url 'medicamentos' %}">Ver más</button>
             </div>
     
             <div class="collage-col">
                 <a href="{% url 'pacientes' %}">
-                    <img src="/static/recursos/fondito.jpeg" alt="Pacientes">
+                    <div class="image-container">
+                        <img src="/static/recursos/pacientes.jpeg" alt="Pacientes">
+                        <div class="image-text">
+                            <p>Accede a la información y gestión de pacientes de manera eficiente.</p>
+                        </div>
+                    </div>
                     <button class="ver-mas-btn" data-url="{% url 'pacientes' %}">Ver más</button>
                 </a>
+                <br></br>
                 <h3>Pacientes</h3>  
             </div>
-    
+            
             <div class="collage-col">
                 <a href="{% url 'recetas' %}">
-                    <img src="/static/recursos/fondito.jpeg" alt="Recetas">
+                    <div class="image-container">
+                        <img src="/static/recursos/recetas.jpeg" alt="Recetas">
+                        <div class="image-text">
+                            <p>Consulta y administra recetas médicas con facilidad.</p>
+                        </div>
+                    </div>
                     <button class="ver-mas-btn" data-url="{% url 'recetas' %}">Ver más</button>
                 </a>
-                <h3>Recetas</h3>  
+                <br></br>
+                <h3>Recetas</h3> 
             </div>
-        </div>
-    
-        <div class="row">
-            <div class="collage-col">
-                <a href="{% url 'entregas' %}">
-                    <img src="/static/recursos/fondito.jpeg" alt="Entregas">
-                    <button class="ver-mas-btn" data-url="{% url 'entregas' %}">Ver más</button>
-                </a>
-                <h3>Entregas</h3>  
+            
             </div>
-    
-            <div class="collage-col">
-                <a href="{% url 'proto' %}">
-                    <img src="/static/recursos/fondito.jpeg" alt="Prototipo">
-                    <button class="ver-mas-btn" data-url="{% url 'proto' %}">Ver más</button>
-                </a>
-                <h3>Prototipo</h3>  
+            
+            <div class="row">
+                <div class="collage-col">
+                    <a href="{% url 'entregas' %}">
+                        <div class="image-container">
+                            <img src="/static/recursos/entregas.jpeg" alt="Entregas">
+                            <div class="image-text">
+                                <p>Monitorea y gestiona la entrega de medicamentos.</p>
+                            </div>
+                        </div>
+                        <button class="ver-mas-btn" data-url="{% url 'entregas' %}">Ver más</button>
+                    </a> 
+                    <br></br>
+                    <h3>Entregas</h3> 
+                </div>
+            
+                <div class="collage-col">
+                    <a href="{% url 'proto' %}">
+                        <div class="image-container">
+                            <img src="/static/recursos/proto.jpg" alt="Prototipo">
+                            <div class="image-text">
+                                <p>Verifica la información del prototipo.</p>
+                            </div>
+                        </div>
+                        <button class="ver-mas-btn" data-url="{% url 'proto' %}">Ver más</button>
+                    </a>
+                    <br></br>
+                    <h3>Prototipo</h3> 
+                </div>
             </div>
-        </div>
-    </section>
+            </section>
+            
     
+
+            <footer class="footer">
+                <div class="footer-content">
+                    <h3>PharmaGo</h3>
+                    <p>Optimiza la gestión de medicamentos con nuestra solución inteligente y autónoma para hospitales.</p>
+                    <ul class="socials">
+                        <li><a href="#"><i class="fa fa-facebook"> </i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"> </i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"> </i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"> </i></a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 PharmaGo. Todos los derechos reservados. Diseñado por <strong>Vet To Care</strong></p>
+                </div>
+            </footer>
 </div>
 
-<footer class="footer">
-    <div class="footer-content">
-        <h3>PharmaGo</h3>
-        <p>Optimiza la gestión de medicamentos con nuestra solución inteligente y autónoma para hospitales.</p>
-        <ul class="socials">
-            <li><a href="#"><i class="fa fa-facebook"> </i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"> </i></a></li>
-            <li><a href="#"><i class="fa fa-youtube"> </i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus"> </i></a></li> 
-        </ul>
-    </div>
-    
-    <div class="footer-bottom">
-        <p>&copy; 2025 PharmaGo. Todos los derechos reservados. Diseñado por <strong>Vet To Care</strong></p>
-    </div>
-</footer>
+
 
 </body>
 </html>
