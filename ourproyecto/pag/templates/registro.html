@@ -56,7 +56,7 @@
       
                   <label>
                     <i class='bx bx-user'><box-icon type='solid' name='calendar' color='#154360'></box-icon></i>
-                    <input type="date" placeholder="Fecha de nacimiento">
+                    <input type="text" id="fecha-nacimiento" name="fecha-nacimiento" placeholder="Fecha de nacimiento">
                   </label>
       
                   <label>
@@ -97,14 +97,18 @@
           </div>
       
         </div>
-      </div>
-      
-
-
-
-
-
-       
+      </div>     
 </div>
+
+<!-- Esto es algo para que salga el calendario en el input -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  flatpickr("#fecha-nacimiento", {
+    dateFormat: "d/m/Y",
+  });
+</script>
+
+
 </body>
 </html>
