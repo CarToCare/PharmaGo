@@ -25,7 +25,6 @@
 </head>
 <body>
 
-<div class="container-fluid">
     <div class="container">
         <h2><box-icon type='solid' name='timer' size='40px'  color="#d6dbdf" class="icono-usuario"></box-icon> Entregas</h2>
         <ul>
@@ -34,24 +33,19 @@
         </ul>
     </div>
 
-    {% for entrega in entregas%}
-    <div class="card">
-        <div class="title">{{entrega.idEntrega}}</div>
-        <div class="field">
-            <strong>Prototipo de distribución:</strong> {{entrega.idPrototipo}}
-        </div>
-        <div class="field">
-            <strong>Paciente que recibio:</strong> {{entrega.idPaciente}}
-        </div>
-        <div class="field">
-            <strong>Fecha de entrega:</strong> {{entrega.registroEntrega}}
-        </div>
-        <div class="field">
-            <strong>Estado de la entrega:</strong> {{entrega.estadoEntrega}}
+    <div class="container-fluid2">
+        <div class="card-container">
+            {% for entrega in entregas %}
+            <div class="card">
+                <div class="title">{{ entrega.idEntrega }}</div>
+                <div class="field"><strong>Prototipo de distribución:</strong> {{ entrega.idPrototipo }}</div>
+                <div class="field"><strong>Paciente que recibió:</strong> {{ entrega.idPaciente }}</div>
+                <div class="field"><strong>Fecha de entrega:</strong> {{ entrega.registroEntrega }}</div>
+                <div class="field"><strong>Estado de la entrega:</strong> {{ entrega.estadoEntrega }}</div>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
-</div>
 
 <footer class="footer">
     <div class="footer-content">

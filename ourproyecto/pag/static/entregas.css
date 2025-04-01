@@ -104,6 +104,59 @@ body {
     top: 8px;
 }
 
+/*Otros estilos de las cards */
+.container-fluid2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 20px; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 280px; 
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card .title {
+    background: rgba(93, 109, 126, 0.8);
+    color: #fff;
+    font-size: 22px;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.card .field {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+}
+
+.card .field strong {
+    color: #34495e;
+}
+
+
 /* Footer */
 .footer{
     width: auto;
