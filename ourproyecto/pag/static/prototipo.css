@@ -22,6 +22,7 @@ body {
     justify-content: flex-start; 
     align-items: center;
     margin-top: -360px;
+    margin-bottom: 10%; 
 }
 
 .container {
