@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="{% static 'medicamentos.css' %}">
+    <link rel="stylesheet" href="{% static 'medi.css' %}">
 
     <title>Registrar Receta</title>
 </head>
@@ -27,10 +27,11 @@
 <body>
     <div class="container-fluid">
         <div class="container">
-            <h2><box-icon type='solid' name='capsule' size='40px' color="#d6dbdf" class="icono-usuario"></box-icon>
+            <h2><box-icon type='solid' name='edit-alt' size='40px' color="#d6dbdf" class="icono-usuario"></box-icon>
                 Registrar Receta</h2>
             <ul>
-                <li><a href="{% url 'recetas' %}"><box-icon name='arrow-back' color="#d6dbdf"></box-icon> Regresar</a>
+                <li><a href="{% url 'recetas' %}"><box-icon name='log-in-circle' type='solid' animation='tada' color="#d6dbdf"
+                    class="icono-regresar"></box-icon> Regresar</a>
                 </li>
             </ul>
         </div>
@@ -78,7 +79,7 @@
                     </div>
                 </div>
 
-                <button type="button" id="add-medicamento">Añadir Medicamento</button>
+                <button type="button" id="add-medicamento" class="btn">Añadir Medicamento</button>
                 <button type="submit" class="btn">Registrar Receta</button>
             </form>
         </div>
