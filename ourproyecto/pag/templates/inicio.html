@@ -148,7 +148,20 @@
             </footer>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var botones = document.querySelectorAll(".ver-mas-btn");
 
+        botones.forEach(function(boton) {
+            boton.addEventListener("click", function() {
+                var url = boton.getAttribute("data-url");
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

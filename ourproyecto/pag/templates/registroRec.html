@@ -69,8 +69,8 @@
                         <label for="horaInicial-0">Hora Inicial:</label>
                         <input type="time" id="horaInicial-0" name="medicamentos[0][horaInicial]" required>
                     
-                        <label for="periodicidad-0">Periodicidad: Cada</label>
-                        <input type="number" id="periodicidad-0" name="medicamentos[0][periodicidad]" required min="1"> horas
+                        <label for="periodicidad-0">Periodicidad (en horas):</label>
+                        <input type="number" id="periodicidad-0" name="medicamentos[0][periodicidad]" required min="1">
                     
                         <label for="fechaInicio-0">Fecha Inicio:</label>
                         <input type="date" id="fechaInicio-0" name="medicamentos[0][fechaInicio]" required>
@@ -107,13 +107,13 @@
                     ${optionsHTML}
                 </select>
         
-                <label for="cantidad-${index}">Cantidad:</label>
+                <label for="cantidad-${index}">Cantidad (en pastillas):</label>
                 <input type="number" id="cantidad-${index}" name="medicamentos[${index}][cantidad]" required>
         
                 <label for="horaInicial-${index}">Hora Inicial:</label>
                 <input type="time" id="horaInicial-${index}" name="medicamentos[${index}][horaInicial]" required>
         
-                <label for="periodicidad-${index}">Periodicidad:</label>
+                <label for="periodicidad-${index}">Periodicidad (en horas):</label>
                 <input type="number" id="periodicidad-${index}" name="medicamentos[${index}][periodicidad]" required min="1">
         
                 <label for="fechaInicio-${index}">Fecha Inicio:</label>
