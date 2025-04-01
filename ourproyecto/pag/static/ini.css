@@ -228,8 +228,8 @@ body {
     width: 80%;
     margin: auto;
     text-align: center;
-    padding-top: 70px; /*fue lo q cambie */
-    padding-bottom: 10px;
+    padding-top: 40px; /*fue lo q cambie */
+    margin-top: 20px;
 }
 
 .row {
@@ -272,10 +272,10 @@ body {
 .footer{
     width: auto;
     height: auto;
-    background-color:#49606e ;
+    background-color: #49606e;
     padding-top: 40px;
     color: #c5c2c2;
-    margin-top: 600px; /* Este lo cambie */
+    margin-top: -300px
 }
 .footer-content {
     display: flex;
