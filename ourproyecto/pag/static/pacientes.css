@@ -246,3 +246,19 @@ body {
     opacity: .4;
     font-weight: 200;
 }
+
+.btn-eliminar {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.btn-eliminar:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}

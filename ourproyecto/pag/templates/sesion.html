@@ -44,11 +44,20 @@
             <div class="form-content">
                 <h2>Iniciar sesión</h2>
                 <p>Por favor, inicia sesión con tus datos</p>
+        
+                {% if messages %}
+                    <div class="alert alert-danger">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+        
                 <form class="user-form" method="POST" action="{% url 'sIn' %}">
                     {% csrf_token %}
                     <label>
                         <i class='bx bx-envelope'><box-icon name='envelope' color='#154360'></box-icon></i>
-                        <input type="text" name="correo" placeholder="Correo electronico">
+                        <input type="text" name="correo" placeholder="Correo electrónico">
                     </label>
                     <label>
                         <i class='bx bx-lock-alt'><box-icon name='lock-alt' color='#154360'></box-icon></i>
@@ -57,7 +66,7 @@
                     <input type="submit" value="Iniciar sesión">
                 </form>
             </div>
-        </div>
+        </div>        
     </div>
 
 

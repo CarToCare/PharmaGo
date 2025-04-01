@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -62,6 +63,10 @@
           {% endfor %}
           <strong>| Riesgo de caída:</strong> {{paciente.riesgoCaida}}
         </div>
+        <form id="form-eliminar-{{ paciente.idPaciente }}" action="{% url 'eliminar_paciente' paciente.idPaciente %}" method="POST">
+          {% csrf_token %}
+          <button type="button" class="btn-eliminar" onclick="confirmarEliminacion('{{ paciente.idPaciente }}')">Eliminar</button>
+        </form>
       </li>
       {% endfor %}
     </ol>
@@ -88,6 +93,25 @@
       <p>&copy; 2025 PharmaGo. Todos los derechos reservados. Diseñado por <strong>Vet To Care</strong></p>
     </div>
   </footer>
+
+  <script>
+    function confirmarEliminacion(idPaciente) {
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: "Esta acción no se puede deshacer.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById("form-eliminar-" + idPaciente).submit();
+            }
+        });
+    }
+  </script>
 
 </body>
 
