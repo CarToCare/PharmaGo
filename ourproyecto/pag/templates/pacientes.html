@@ -55,13 +55,14 @@
           <div class="fw-bold"><box-icon name='user' type='solid'></box-icon> <span>{{paciente.idPaciente}} </span>
           </div>
           <strong>Nombre:</strong> {{paciente.nombrePaciente}}
-          <strong>| Fecha de nacimiento:</strong> {{paciente.fechaNacimientoPaciente}}
-          <strong>| Género:</strong> {{paciente.generoPaciente}}
-          <strong>| Habitación:</strong> {{paciente.habitacionPaciente}}
-          <strong>| Alergias:</strong>{% for alergia in paciente.alergiasPaciente %}
+          <strong>Fecha de nacimiento:</strong> {{paciente.fechaNacimientoPaciente}}
+          <strong>Género:</strong> {{paciente.generoPaciente}}
+          <strong>Habitación:</strong> {{paciente.habitacionPaciente}}
+          <strong>Cama:</strong> {{paciente.camaPaciente}}
+          <strong>Alergias:</strong>{% for alergia in paciente.alergiasPaciente %}
           {{alergia}}<a>.</a>
           {% endfor %}
-          <strong>| Riesgo de caída:</strong> {{paciente.riesgoCaida}}
+          <strong>Riesgo de caída:</strong> {{paciente.riesgoCaida}}
         </div>
         <form id="form-eliminar-{{ paciente.idPaciente }}" action="{% url 'eliminar_paciente' paciente.idPaciente %}" method="POST">
           {% csrf_token %}
